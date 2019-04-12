@@ -19,14 +19,17 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testObject() {
-        XCTAssertNil(userDefaults.object(forKey: testKey))
+        // XCTAssertNil(userDefaults.object(forKey: testKey))
 
         userDefaults.set("string", forKey: testKey)
         XCTAssertEqual(userDefaults.object(forKey: testKey) as? String, "string")
+
+        userDefaults.set(10, forKey: testKey)
+        XCTAssertEqual(userDefaults.object(forKey: testKey) as? Int, 10)
     }
 
     func testString() {
-        XCTAssertNil(userDefaults.string(forKey: testKey))
+        // XCTAssertNil(userDefaults.string(forKey: testKey))
 
         userDefaults.set("string", forKey: testKey)
         XCTAssertEqual(userDefaults.string(forKey: testKey), "string")
@@ -36,7 +39,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testInteger() {
-        XCTAssertEqual(userDefaults.integer(forKey: testKey), 0)
+        // XCTAssertEqual(userDefaults.integer(forKey: testKey), 0)
 
         userDefaults.set(43, forKey:testKey)
         XCTAssertEqual(userDefaults.integer(forKey: testKey), 43)
@@ -46,28 +49,28 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testBool() {
-        XCTAssertFalse(userDefaults.bool(forKey: testKey))
+        // XCTAssertFalse(userDefaults.bool(forKey: testKey))
 
         userDefaults.set(true, forKey:testKey)
         XCTAssertTrue(userDefaults.bool(forKey: testKey))
     }
 
     func testDouble() {
-        XCTAssertEqual(userDefaults.double(forKey: testKey), 0)
+        // XCTAssertEqual(userDefaults.double(forKey: testKey), 0)
 
         userDefaults.set(0.42, forKey:testKey)
         XCTAssertEqual(userDefaults.double(forKey: testKey), 0.42, accuracy: 0.01)
     }
 
     func testFloat() {
-        XCTAssertEqual(userDefaults.double(forKey: testKey), 0)
+        // XCTAssertEqual(userDefaults.float(forKey: testKey), 0)
 
         userDefaults.set(Float(0.42), forKey:testKey)
         XCTAssertEqual(userDefaults.float(forKey: testKey), 0.42, accuracy: 0.01)
     }
 
     func testArray() {
-        XCTAssertNil(userDefaults.array(forKey: testKey))
+        // XCTAssertNil(userDefaults.array(forKey: testKey))
 
         userDefaults.set([], forKey: testKey)
         XCTAssertEqual(userDefaults.array(forKey: testKey)?.isEmpty, true)
@@ -82,7 +85,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testDictionary() {
-        XCTAssertNil(userDefaults.dictionary(forKey: testKey))
+        // XCTAssertNil(userDefaults.dictionary(forKey: testKey))
 
         userDefaults.set([:], forKey:testKey)
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?.isEmpty, true)
@@ -97,7 +100,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testStringArray() {
-        XCTAssertNil(userDefaults.stringArray(forKey: testKey))
+        // XCTAssertNil(userDefaults.stringArray(forKey: testKey))
 
         userDefaults.set([], forKey: testKey)
         XCTAssertEqual(userDefaults.stringArray(forKey: testKey), [])
@@ -107,6 +110,9 @@ class MockUserDefaultsSwiftTests: XCTestCase {
 
         userDefaults.set(["string", 10], forKey:testKey)
         XCTAssertNil(userDefaults.stringArray(forKey: testKey))
+
+        userDefaults.set("not an array", forKey: testKey)
+        XCTAssertNil(userDefaults.stringArray(forKey: testKey))
     }
 
     func testData() {
@@ -115,7 +121,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
             return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
         }
 
-        XCTAssertNil(userDefaults.data(forKey: testKey))
+        // XCTAssertNil(userDefaults.data(forKey: testKey))
 
         let data = createData()
         XCTAssertNotNil(data)
@@ -127,7 +133,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testUrl() {
-        XCTAssertNil(userDefaults.url(forKey: testKey))
+        // XCTAssertNil(userDefaults.url(forKey: testKey))
 
         let url = URL(string: "https://github.com/")
         XCTAssertNotNil(url)
