@@ -7,9 +7,14 @@
 
 ## Installation
 ### CocoaPods
+```ruby:Podfile
+pod 'MockUserDefaults', '~> 1.0'
+```
 
 ### Carthage
+```ruby:Cartfile
 github "417-72KI/MockUserDefaults" ~> 1.0
+```
 
 ## Usage
 ### Objective-C
