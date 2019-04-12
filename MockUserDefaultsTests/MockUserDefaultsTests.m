@@ -22,7 +22,7 @@ NSString *const testKey = @"MockUserDefaultsTestKey";
 {
     [super setUp];
     self.userDefaults = [NSUserDefaults mockedUserDefaults];
-    [MockUserDefualts resetMockedUserDefaults];
+    [NSUserDefaults resetMockedUserDefaults];
 }
 
 - (void)testObject

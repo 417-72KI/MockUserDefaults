@@ -15,7 +15,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     private let userDefaults: UserDefaults = .mocked
 
     override func setUp() {
-        MockUserDefualts.reset()
+        UserDefaults.resetMock()
     }
 
     func testObject() {
