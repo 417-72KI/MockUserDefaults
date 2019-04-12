@@ -43,7 +43,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21FEC2CE2260932500F55BFB"
+               BlueprintIdentifier = "21FEC2DD226094C400F55BFB"
                BuildableName = "MockUserDefaultsSwiftTests.xctest"
                BlueprintName = "MockUserDefaultsSwiftTests"
                ReferencedContainer = "container:MockUserDefaults.xcodeproj">

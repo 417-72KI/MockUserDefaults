@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface MockUserDefualts: NSObject
-+ (void)resetMockedUserDefaults;
++ (void)resetMockedUserDefaults NS_SWIFT_NAME(reset());
 
 - (nullable id)objectForKey:(NSString *)defaultName;
 - (void)setObject:(nullable id)value forKey:(NSString *)defaultName;
