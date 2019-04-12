@@ -1,9 +1,10 @@
 # MockUserDefaults
-[![Build Status](https://travis-ci.com/417-72KI/MockUserDefaults.svg?token=Psmbc5tqUwP8KEKGUZaz&branch=master)](https://travis-ci.com/417-72KI/MockUserDefaults)
-[![Version](https://img.shields.io/cocoapods/l/MockUserDefaults.svg)](https://cocoapods.org/pods/MockUserDefaults)
-[![Platform](https://img.shields.io/cocoapods/p/MockUserDefaults.svg)](https://cocoapods.org/pods/MockUserDefaults)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org/)
+[![Build Status](https://travis-ci.com/417-72KI/MockUserDefaults.svg?branch=master)](https://travis-ci.com/417-72KI/MockUserDefaults)
+[![Version](http://img.shields.io/cocoapods/v/MockUserDefaults.svg?style=flat)](http://cocoapods.org/pods/MockUserDefaults)
+[![Platform](http://img.shields.io/cocoapods/p/MockUserDefaults.svg?style=flat)](http://cocoapods.org/pods/MockUserDefaults)
+[![GitHub release](https://img.shields.io/github/release/417-72KI/MockUserDefaults/all.svg)](https://github.com/417-72KI/MockUserDefaults/releases)
+![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)
+[![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/417-72KI/MockUserDefaults/master/LICENSE)
 
 `MockUserDefaults` is a simple replacement for `NSUserDefaults`/`UserDefaults` to make test easier.
 
