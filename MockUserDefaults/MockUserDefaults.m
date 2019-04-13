@@ -8,7 +8,7 @@
 
 #import "MockUserDefaults.h"
 
-@interface MockUserDefualts: NSObject
+@interface MockUserDefaults: NSObject
 
 - (nullable id)objectForKey:(NSString *)defaultName;
 - (void)setObject:(nullable id)value forKey:(NSString *)defaultName;
@@ -34,7 +34,7 @@
 // MARK: -
 NSMutableDictionary* mockDictionary;
 
-@implementation MockUserDefualts
+@implementation MockUserDefaults
 + (void)initialize
 {
     mockDictionary = [NSMutableDictionary dictionary];
@@ -169,7 +169,7 @@ NSMutableDictionary* mockDictionary;
 {
     static NSUserDefaults *userDefaluts;
     if (!userDefaluts) {
-        userDefaluts = (id)[[MockUserDefualts alloc] init];
+        userDefaluts = (id)[[MockUserDefaults alloc] init];
     }
     return userDefaluts;
 }
