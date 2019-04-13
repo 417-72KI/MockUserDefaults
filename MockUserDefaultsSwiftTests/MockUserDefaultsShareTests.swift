@@ -26,49 +26,85 @@ class MockUserDefaultsShareTests: XCTestCase {
     func testObject() {
         test1Repository.object = "hoge"
         XCTAssertEqual(test2Repository.object as? String, "hoge")
+
+        test2Repository.object = 10
+        XCTAssertEqual(test1Repository.object as? Int, 10)
     }
 
     func testString() {
         test1Repository.string = "hoge"
         XCTAssertEqual(test2Repository.string, "hoge")
+
+        test2Repository.string = "fuga"
+        XCTAssertEqual(test1Repository.string, "fuga")
     }
 
     func testInteger() {
         test1Repository.integer = 10
         XCTAssertEqual(test2Repository.integer, 10)
+
+        test2Repository.integer = 417
+        XCTAssertEqual(test1Repository.integer, 417)
     }
 
     func testBool() {
         test1Repository.bool = true
         XCTAssertTrue(test2Repository.bool)
+
+        test2Repository.bool = false
+        XCTAssertFalse(test1Repository.bool)
     }
 
     func testDouble() {
         test1Repository.double = 0.42
         XCTAssertEqual(test2Repository.double, 0.42, accuracy: 0.01)
+
+        test2Repository.double = 4.17
+        XCTAssertEqual(test1Repository.double, 4.17, accuracy: 0.01)
     }
 
     func testFloat() {
         test1Repository.float = 0.42
         XCTAssertEqual(test2Repository.float, 0.42, accuracy: 0.01)
+
+        test2Repository.float = 4.17
+        XCTAssertEqual(test1Repository.float, 4.17, accuracy: 0.01)
     }
 
     func testArray() {
         test1Repository.array = []
         XCTAssertNotNil(test2Repository.array)
         XCTAssertEqual(test2Repository.array?.isEmpty, true)
+
+        test2Repository.array = ["string", 10]
+        XCTAssertNotNil(test1Repository.array)
+        XCTAssertEqual(test1Repository.array?.count, 2)
+        XCTAssertEqual(test1Repository.array?.first as? String, "string")
+        XCTAssertEqual(test1Repository.array?.last as? Int, 10)
     }
 
     func testDictionary() {
         test1Repository.dictionary = [:]
         XCTAssertNotNil(test2Repository.dictionary)
         XCTAssertEqual(test2Repository.dictionary?.isEmpty, true)
+
+        test2Repository.dictionary = ["stringKey" :"string", "integerKey": 10]
+        XCTAssertNotNil(test1Repository.dictionary)
+        XCTAssertEqual(test1Repository.dictionary?.count, 2)
+        XCTAssertEqual(test1Repository.dictionary?["stringKey"] as? String, "string")
+        XCTAssertEqual(test1Repository.dictionary?["integerKey"] as? Int, 10)
     }
 
     func testStringArray() {
         test1Repository.stringArray = []
         XCTAssertNotNil(test2Repository.stringArray)
         XCTAssertEqual(test2Repository.stringArray?.isEmpty, true)
+
+        test2Repository.stringArray = ["string", "array"]
+        XCTAssertNotNil(test1Repository.stringArray)
+        XCTAssertEqual(test1Repository.stringArray?.count, 2)
+        XCTAssertEqual(test1Repository.stringArray?.first, "string")
+        XCTAssertEqual(test1Repository.stringArray?.last, "array")
     }
 
     func testData() {
@@ -80,12 +116,18 @@ class MockUserDefaultsShareTests: XCTestCase {
         let data = createData()
         test1Repository.data = data
         XCTAssertEqual(test2Repository.data, data)
+
+        test2Repository.data = nil
+        XCTAssertNil(test1Repository.data)
     }
 
     func testUrl() {
         let url = URL(string: "https://github.com/")!
         test1Repository.url = url
         XCTAssertEqual(test2Repository.url, url)
+
+        test2Repository.url = nil
+        XCTAssertNil(test1Repository.url)
     }
 }
 
