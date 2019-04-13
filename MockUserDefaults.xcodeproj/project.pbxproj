@@ -13,6 +13,7 @@
 		21FEC2C72260788900F55BFB /* MockUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FEC2C62260788900F55BFB /* MockUserDefaults.m */; };
 		21FEC2E1226094C400F55BFB /* MockUserDefaultsSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FEC2E0226094C400F55BFB /* MockUserDefaultsSwiftTests.swift */; };
 		21FEC2E3226094C400F55BFB /* MockUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FEC2AC226077A300F55BFB /* MockUserDefaults.framework */; };
+		B966D29522622FC30009FE75 /* MockUserDefaultsShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966D29422622FC30009FE75 /* MockUserDefaultsShareTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		21FEC2DE226094C400F55BFB /* MockUserDefaultsSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockUserDefaultsSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FEC2E0226094C400F55BFB /* MockUserDefaultsSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsSwiftTests.swift; sourceTree = "<group>"; };
 		21FEC2E2226094C400F55BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B966D29422622FC30009FE75 /* MockUserDefaultsShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsShareTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				21FEC2E0226094C400F55BFB /* MockUserDefaultsSwiftTests.swift */,
+				B966D29422622FC30009FE75 /* MockUserDefaultsShareTests.swift */,
 				21FEC2E2226094C400F55BFB /* Info.plist */,
 			);
 			path = MockUserDefaultsSwiftTests;
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21FEC2E1226094C400F55BFB /* MockUserDefaultsSwiftTests.swift in Sources */,
+				B966D29522622FC30009FE75 /* MockUserDefaultsShareTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
