@@ -51,7 +51,7 @@
 		21FEC2BA226077A400F55BFB /* MockUserDefaultsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockUserDefaultsTests.m; sourceTree = "<group>"; };
 		21FEC2BC226077A400F55BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21FEC2C62260788900F55BFB /* MockUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MockUserDefaults.m; sourceTree = "<group>"; };
-		21FEC2DE226094C400F55BFB /* MockUserDefaultsSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockUserDefaultsSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21FEC2DE226094C400F55BFB /* MockUserDefaultsSwift4_2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockUserDefaultsSwift4_2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FEC2E0226094C400F55BFB /* MockUserDefaultsSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsSwiftTests.swift; sourceTree = "<group>"; };
 		21FEC2E2226094C400F55BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B958A9E22281E3270083624F /* MockUserDefaultsSwift5Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockUserDefaultsSwift5Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +101,7 @@
 			children = (
 				21FEC2AE226077A400F55BFB /* MockUserDefaults */,
 				21FEC2B9226077A400F55BFB /* MockUserDefaultsTests */,
-				21FEC2DF226094C400F55BFB /* MockUserDefaultsSwiftTests */,
+				21FEC2DF226094C400F55BFB /* MockUserDefaultsSwift4_2Tests */,
 				B958A9E32281E3270083624F /* MockUserDefaultsSwift5Tests */,
 				21FEC2AD226077A300F55BFB /* Products */,
 			);
@@ -112,7 +112,7 @@
 			children = (
 				21FEC2AC226077A300F55BFB /* MockUserDefaults.framework */,
 				21FEC2B5226077A400F55BFB /* MockUserDefaultsTests.xctest */,
-				21FEC2DE226094C400F55BFB /* MockUserDefaultsSwiftTests.xctest */,
+				21FEC2DE226094C400F55BFB /* MockUserDefaultsSwift4_2Tests.xctest */,
 				B958A9E22281E3270083624F /* MockUserDefaultsSwift5Tests.xctest */,
 			);
 			name = Products;
@@ -137,14 +137,14 @@
 			path = MockUserDefaultsTests;
 			sourceTree = "<group>";
 		};
-		21FEC2DF226094C400F55BFB /* MockUserDefaultsSwiftTests */ = {
+		21FEC2DF226094C400F55BFB /* MockUserDefaultsSwift4_2Tests */ = {
 			isa = PBXGroup;
 			children = (
 				21FEC2E0226094C400F55BFB /* MockUserDefaultsSwiftTests.swift */,
 				B966D29422622FC30009FE75 /* MockUserDefaultsShareTests.swift */,
 				21FEC2E2226094C400F55BFB /* Info.plist */,
 			);
-			path = MockUserDefaultsSwiftTests;
+			path = MockUserDefaultsSwift4_2Tests;
 			sourceTree = "<group>";
 		};
 		B958A9E32281E3270083624F /* MockUserDefaultsSwift5Tests */ = {
@@ -207,9 +207,9 @@
 			productReference = 21FEC2B5226077A400F55BFB /* MockUserDefaultsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		21FEC2DD226094C400F55BFB /* MockUserDefaultsSwiftTests */ = {
+		21FEC2DD226094C400F55BFB /* MockUserDefaultsSwift4_2Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 21FEC2E8226094C400F55BFB /* Build configuration list for PBXNativeTarget "MockUserDefaultsSwiftTests" */;
+			buildConfigurationList = 21FEC2E8226094C400F55BFB /* Build configuration list for PBXNativeTarget "MockUserDefaultsSwift4_2Tests" */;
 			buildPhases = (
 				21FEC2DA226094C400F55BFB /* Sources */,
 				21FEC2DB226094C400F55BFB /* Frameworks */,
@@ -220,9 +220,9 @@
 			dependencies = (
 				21FEC2E5226094C400F55BFB /* PBXTargetDependency */,
 			);
-			name = MockUserDefaultsSwiftTests;
+			name = MockUserDefaultsSwift4_2Tests;
 			productName = MockUserDefaultsSwiftTests;
-			productReference = 21FEC2DE226094C400F55BFB /* MockUserDefaultsSwiftTests.xctest */;
+			productReference = 21FEC2DE226094C400F55BFB /* MockUserDefaultsSwift4_2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B958A9E12281E3270083624F /* MockUserDefaultsSwift5Tests */ = {
@@ -281,7 +281,7 @@
 			targets = (
 				21FEC2AB226077A300F55BFB /* MockUserDefaults */,
 				21FEC2B4226077A400F55BFB /* MockUserDefaultsTests */,
-				21FEC2DD226094C400F55BFB /* MockUserDefaultsSwiftTests */,
+				21FEC2DD226094C400F55BFB /* MockUserDefaultsSwift4_2Tests */,
 				B958A9E12281E3270083624F /* MockUserDefaultsSwift5Tests */,
 			);
 		};
@@ -574,13 +574,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsSwiftTests/Info.plist;
+				INFOPLIST_FILE = MockUserDefaultsSwift4_2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaultsSwiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaultsSwift4.2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -593,13 +593,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsSwiftTests/Info.plist;
+				INFOPLIST_FILE = MockUserDefaultsSwift4_2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaultsSwiftTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaultsSwift4.2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -680,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		21FEC2E8226094C400F55BFB /* Build configuration list for PBXNativeTarget "MockUserDefaultsSwiftTests" */ = {
+		21FEC2E8226094C400F55BFB /* Build configuration list for PBXNativeTarget "MockUserDefaultsSwift4_2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				21FEC2E6226094C400F55BFB /* Debug */,
