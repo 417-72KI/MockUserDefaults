@@ -44,8 +44,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21FEC2DD226094C400F55BFB"
-               BuildableName = "MockUserDefaultsSwiftTests.xctest"
-               BlueprintName = "MockUserDefaultsSwiftTests"
+               BuildableName = "MockUserDefaultsSwift4_2Tests.xctest"
+               BlueprintName = "MockUserDefaultsSwift4_2Tests"
+               ReferencedContainer = "container:MockUserDefaults.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B958A9E12281E3270083624F"
+               BuildableName = "MockUserDefaultsSwift5Tests.xctest"
+               BlueprintName = "MockUserDefaultsSwift5Tests"
                ReferencedContainer = "container:MockUserDefaults.xcodeproj">
             </BuildableReference>
          </TestableReference>
