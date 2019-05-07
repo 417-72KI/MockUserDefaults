@@ -49,6 +49,16 @@
                ReferencedContainer = "container:MockUserDefaults.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B958A9E12281E3270083624F"
+               BuildableName = "MockUserDefaultsSwift5Tests.xctest"
+               BlueprintName = "MockUserDefaultsSwift5Tests"
+               ReferencedContainer = "container:MockUserDefaults.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
