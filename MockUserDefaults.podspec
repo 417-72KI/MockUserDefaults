@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = "MockUserDefaults"
-    s.version      = "1.0"
-    s.summary      = "Mocking UserDefaults"
+    s.version      = "1.0.1"
+    s.summary      = "Mocking UserDefaults for tests"
         
     s.description  = <<-DESC
                     MockUserDefaults is a simple replacement for NSUserDefaults/UserDefaults to make test easier.
