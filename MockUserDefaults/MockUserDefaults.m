@@ -8,6 +8,8 @@
 
 #import "MockUserDefaults.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MockUserDefaults: NSObject
 
 - (nullable id)objectForKey:(NSString *)defaultName;
@@ -31,8 +33,10 @@
 - (void)synchronize;
 @end
 
+NS_ASSUME_NONNULL_END
+
 // MARK: -
-NSMutableDictionary* mockDictionary;
+NSMutableDictionary *mockDictionary;
 
 @implementation MockUserDefaults
 + (void)initialize
