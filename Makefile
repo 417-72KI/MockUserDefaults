@@ -8,3 +8,10 @@ lint:
 
 deploy:
 	pod trunk push $(project_name).podspec --allow-warnings
+
+demo_app:
+	cd DemoApp && \
+	carthage bootstrap --platform iOS --cache-builds && \
+	mint run xcodegen && \
+	pod install
+	open DemoApp/MockUserDefaultsDemo.xcworkspace

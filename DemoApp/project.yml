@@ -1,0 +1,90 @@
+name: MockUserDefaultsDemo
+attributes:
+  ORGANIZATIONNAME: 417.72KI
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 10.0
+    SWIFT_VERSION: 5.0
+    ALWAYS_SEARCH_USER_PATHS: false
+    CLANG_ENABLE_OBJC_ARC: true
+options:
+  xcodeVersion: 10.2
+  bundleIdPrefix: io.github.417-72KI
+targets:
+  MockUserDefaultsDemo:
+    type: application
+    platform: iOS
+    deploymentTarget: 11.0
+    sources: 
+      - MockUserDefaultsDemo
+    info:
+      path: MockUserDefaultsDemo/Resources/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: 6.0
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundlePackageType: APPL
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: 1
+        LSRequiresIPhoneOS: true
+        UILaunchStoryboardName: LaunchScreen
+        UIMainStoryboardFile: Main
+        UIRequiredDeviceCapabilities: 
+          - armv7
+        UISupportedInterfaceOrientations: 
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: ${inherited}
+        PRODUCT_NAME: MockUserDefaultsDemo
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.417-72KI.MockUserDefaultsDemo
+        CODE_SIGN_STYLE: Manual
+        TARGETED_DEVICE_FAMILY: 1
+        DEVELOPMENT_TEAM: ""
+        LIBRARY_SEARCH_PATHS: $(inherited)
+      configs:
+        debug: 
+          CODE_SIGN_IDENTITY: iPhone Developer
+          PROVISIONING_PROFILE_SPECIFIER: ""
+        release: 
+          CODE_SIGN_IDENTITY: iPhone Distribution
+          PROVISIONING_PROFILE_SPECIFIER: ""
+          EXCLUDED_SOURCE_FILE_NAMES: Mock*
+    preBuildScripts:
+      - name: Lint
+        script: |
+                if which swiftlint >/dev/null; then
+                swiftlint
+                else
+                echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                fi
+  MockUserDefaultsDemoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: MockUserDefaultsDemoTests
+    info:
+      path: MockUserDefaultsDemoTests/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleInfoDictionaryVersion: 6.0
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundlePackageType: BNDL
+        CFBundleShortVersionString: 1.0
+        CFBundleVersion: 1
+    settings:
+      INFOPLIST_FILE: MockUserDefaultsDemoTests/info.plist
+      TEST_HOST: $(BUILT_PRODUCTS_DIR)/MockUserDefaultsDemo.app/MockUserDefaultsDemo
+      CODE_SIGN_STYLE: Automatic
+      CODE_SIGN_IDENTITY: iPhone Developer
+      DEVELOPMENT_TEAM: ""
+    dependencies:
+      - target: MockUserDefaultsDemo
+      - carthage: Quick
+      - carthage: Nimble

@@ -1,0 +1,16 @@
+PODS:
+  - MockUserDefaults (1.1.0)
+
+DEPENDENCIES:
+  - MockUserDefaults (from `../`)
+
+EXTERNAL SOURCES:
+  MockUserDefaults:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MockUserDefaults: 14075edb595feb0168c3745beda5f84b6c19f91a
+
+PODFILE CHECKSUM: 7baef2407782cf4b0a418eff493f2f41af9b14d2
+
+COCOAPODS: 1.6.1
