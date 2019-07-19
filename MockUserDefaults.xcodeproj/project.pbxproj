@@ -511,6 +511,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaults";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -534,6 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.417-72KI.MockUserDefaults";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
