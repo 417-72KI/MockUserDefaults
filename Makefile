@@ -11,7 +11,7 @@ deploy:
 
 demo_app:
 	cd DemoApp && \
-	carthage bootstrap --platform iOS --cache-builds && \
+	carthage bootstrap --platform iOS --no-use-binaries --cache-builds && \
 	mint run xcodegen && \
 	pod install
 	open DemoApp/MockUserDefaultsDemo.xcworkspace

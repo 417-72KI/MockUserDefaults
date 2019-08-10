@@ -6,7 +6,7 @@ configs:
   Release: release
 settings:
   base:
-    IPHONEOS_DEPLOYMENT_TARGET: 10.0
+    IPHONEOS_DEPLOYMENT_TARGET: 11.0
     SWIFT_VERSION: 5.0
     ALWAYS_SEARCH_USER_PATHS: false
     CLANG_ENABLE_OBJC_ARC: true
@@ -26,7 +26,7 @@ targets:
         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
         CFBundleExecutable: $(EXECUTABLE_NAME)
         CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-        CFBundleInfoDictionaryVersion: 6.0
+        CFBundleInfoDictionaryVersion: '6.0'
         CFBundleName: $(PRODUCT_NAME)
         CFBundlePackageType: APPL
         CFBundleShortVersionString: 1.0.0
@@ -55,6 +55,12 @@ targets:
           CODE_SIGN_IDENTITY: iPhone Distribution
           PROVISIONING_PROFILE_SPECIFIER: ""
           EXCLUDED_SOURCE_FILE_NAMES: Mock*
+    dependencies:
+      - carthage: RxSwift
+      - carthage: RxRelay
+      - carthage: RxCocoa
+      - carthage: RxDataSources
+      - carthage: Differentiator     
     preBuildScripts:
       - name: Lint
         script: |
