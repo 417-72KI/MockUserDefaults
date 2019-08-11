@@ -12,3 +12,7 @@ struct Model {
     var key: String
     var value: String
 }
+
+protocol HasModel {
+    var model: Model? { get set }
+}

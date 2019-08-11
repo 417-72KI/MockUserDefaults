@@ -45,6 +45,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="873-R1-oFw" kind="show" id="39S-go-exg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -58,7 +61,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cwj-th-Hhl"/>
+                    <navigationItem key="navigationItem" id="cwj-th-Hhl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TAC-sZ-9if">
+                            <connections>
+                                <segue destination="873-R1-oFw" kind="show" id="c9D-fB-A6f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Wjw-2L-N3Y" id="e65-QI-lzv"/>
                     </connections>
@@ -66,6 +75,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1000" y="755"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="LxJ-km-r52">
+            <objects>
+                <viewController id="873-R1-oFw" customClass="DetailViewController" customModule="MockUserDefaultsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d1y-5i-8B1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6Cf-mE-6wD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHO-bm-W4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R2R-cg-TgX">
@@ -86,4 +110,7 @@
             <point key="canvasLocation" x="134.78260869565219" y="754.6875"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="c9D-fB-A6f"/>
+    </inferredMetricsTieBreakers>
 </document>

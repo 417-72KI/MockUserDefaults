@@ -61,4 +61,12 @@ class MainViewController: UIViewController {
         notificationObserver = nil
         super.viewWillDisappear(animated)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var hasModel = segue.destination as? HasModel,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            hasModel.model = dataSource[indexPath]
+        }
+    }
 }
