@@ -13,6 +13,9 @@ struct Model {
     var value: String?
 }
 
+extension Model: Equatable {
+}
+
 extension Model: Comparable {
     static func < (lhs: Model, rhs: Model) -> Bool {
         return lhs.key < rhs.key

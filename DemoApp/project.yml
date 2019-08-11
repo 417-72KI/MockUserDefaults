@@ -103,3 +103,5 @@ targets:
       - target: MockUserDefaultsDemo
       - carthage: Quick
       - carthage: Nimble
+      - carthage: RxTest
+      - carthage: RxBlocking
