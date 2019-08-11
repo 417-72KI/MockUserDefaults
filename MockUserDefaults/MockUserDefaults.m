@@ -173,7 +173,7 @@ NSMutableDictionary *mockDictionary;
 {
     static NSUserDefaults *userDefaluts;
     if (!userDefaluts) {
-        userDefaluts = (id)[[MockUserDefaults alloc] init];
+        userDefaluts = (id)[MockUserDefaults new];
     }
     return userDefaluts;
 }
