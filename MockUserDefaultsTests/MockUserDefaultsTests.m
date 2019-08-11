@@ -166,4 +166,20 @@ NSString *const testKey = @"MockUserDefaultsTestKey";
         XCTFail(@"Something happen in synchronize with expection: %@", exception);
     }
 }
+
+- (void)testDictionaryRepresentation
+{
+    NSDictionary *expected = @{
+                               @"a": @"b",
+                               @"b": @1,
+                               @"c": @3.14,
+                               @"d": @YES
+                               };
+    [self.userDefaults setObject:@"b" forKey:@"a"];
+    [self.userDefaults setInteger:1 forKey:@"b"];
+    [self.userDefaults setDouble:3.14 forKey:@"c"];
+    [self.userDefaults setBool:YES forKey:@"d"];
+
+    XCTAssertEqualObjects([self.userDefaults dictionaryRepresentation], expected);
+}
 @end
