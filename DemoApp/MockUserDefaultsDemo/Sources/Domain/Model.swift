@@ -10,9 +10,9 @@ import Foundation
 
 struct Model {
     var key: String
-    var value: String
+    var value: String?
 }
 
 protocol HasModel {
-    var model: Model? { get set }
+    var model: Model { get set }
 }
