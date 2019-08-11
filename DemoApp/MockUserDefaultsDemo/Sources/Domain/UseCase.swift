@@ -27,7 +27,7 @@ extension UseCase {
                 .filter { !["AddingEmojiKeybordHandled",
                             "PKKeychainVersionKey",
                             "AKLastIDMSEnvironment"].contains($0.key) }
-            event(.success(dictionary.mapValues { "\($0)" }.map(Model.init)))
+            event(.success(dictionary.mapValues { "\($0)" }.map(Model.init).sorted()))
             return Disposables.create()
         }
     }
