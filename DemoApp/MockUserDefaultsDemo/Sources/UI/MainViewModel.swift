@@ -22,7 +22,7 @@ extension MainViewModel {
     func fetch() {
         useCase.fetchAllSettings()
             .subscribe(
-                onSuccess: { [modelRelay] in modelRelay.accept($0) },
+                onSuccess: { [modelRelay] in modelRelay.accept($0.sorted()) },
                 onError: { [errorRelay] in errorRelay.accept($0) }
             )
             .disposed(by: bag)

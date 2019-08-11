@@ -13,6 +13,12 @@ struct Model {
     var value: String?
 }
 
+extension Model: Comparable {
+    static func < (lhs: Model, rhs: Model) -> Bool {
+        return lhs.key < rhs.key
+    }
+}
+
 protocol HasModel {
     var model: Model { get set }
 }
