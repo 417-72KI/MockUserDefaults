@@ -16,7 +16,7 @@ final class DetailViewModel: UsesUseCase {
 
     private let bag = DisposeBag()
 
-    fileprivate let modelRelay = BehaviorRelay<Model>(value: Model(key: "", value: nil))
+    fileprivate let modelRelay = BehaviorRelay<Model>(value: .init(key: "", value: nil))
     fileprivate let completedRelay = PublishRelay<Void>()
 }
 
