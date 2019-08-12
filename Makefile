@@ -7,4 +7,4 @@ lint:
 	pod spec lint --no-clean --allow-warnings
 
 deploy:
-	pod trunk push $(project_name).podspec
+	pod trunk push $(project_name).podspec --allow-warnings
