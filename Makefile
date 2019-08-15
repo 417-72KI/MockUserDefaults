@@ -10,8 +10,7 @@ deploy:
 	pod trunk push $(project_name).podspec --allow-warnings
 
 demo_app:
-	cd DemoApp && \
-	carthage bootstrap --platform iOS --no-use-binaries --cache-builds && \
-	mint run xcodegen && \
-	pod install
-	open DemoApp/MockUserDefaultsDemo.xcworkspace
+	$(MAKE) -C DemoApp carthage_boot xcode
+
+test_demo:
+	bundle exec fastlane test_demo
