@@ -14,12 +14,12 @@ protocol UsesUseCase {
 }
 
 protocol UseCase: UsesUserDefaults {
-    func fetchAllSettings() -> Single<[Model]>
+    func fetchAll() -> Single<[Model]>
     func save(_ model: Model)
 }
 
 extension UseCase {
-    func fetchAllSettings() -> Single<[Model]> {
+    func fetchAll() -> Single<[Model]> {
         return Single.create { [userDefaults] event in
             let dictionary = userDefaults.dictionaryRepresentation()
                 // Exclude System keys

@@ -35,7 +35,7 @@ class UseCaseTests: XCTestCase, UsesUseCase {
         ]
         expected.forEach(useCase.save)
 
-        XCTAssertEqual(try useCase.fetchAllSettings().toBlocking().single(), expected)
+        XCTAssertEqual(try useCase.fetchAll().toBlocking().single(), expected)
     }
 }
 

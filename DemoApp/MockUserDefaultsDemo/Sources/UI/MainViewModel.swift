@@ -20,7 +20,7 @@ final class MainViewModel: UsesUseCase {
 
 extension MainViewModel {
     func fetch() {
-        useCase.fetchAllSettings()
+        useCase.fetchAll()
             .subscribe(
                 onSuccess: { [modelRelay] in modelRelay.accept($0) },
                 onError: { [errorRelay] in errorRelay.accept($0) }
