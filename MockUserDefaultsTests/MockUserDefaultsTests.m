@@ -15,14 +15,28 @@
 @end
 
 NSString *const testKey = @"MockUserDefaultsTestKey";
+NSDictionary *standardDictionaryRepresentation;
 
 @implementation MockUserDefaultsTests
+
++ (void)setUp
+{
+    [super setUp];
+    standardDictionaryRepresentation = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] copy];
+}
 
 - (void)setUp
 {
     [super setUp];
     self.userDefaults = [NSUserDefaults mockedUserDefaults];
+}
+
+- (void)tearDown
+{
     [NSUserDefaults resetMockedUserDefaults];
+    XCTAssertNotEqualObjects([[NSUserDefaults standardUserDefaults] dictionaryRepresentation], [[NSUserDefaults mockedUserDefaults] dictionaryRepresentation]);
+    XCTAssertEqualObjects([[NSUserDefaults standardUserDefaults] dictionaryRepresentation], standardDictionaryRepresentation);
+    [super tearDown];
 }
 
 - (void)testObject
