@@ -177,9 +177,9 @@ NSMutableDictionary *mockDictionary;
 @implementation NSUserDefaults (Mock)
 + (NSUserDefaults *)mockedUserDefaults
 {
-    static NSUserDefaults *userDefaluts;
+    static id userDefaluts;
     if (!userDefaluts) {
-        userDefaluts = (id)[MockUserDefaults new];
+        userDefaluts = [MockUserDefaults new];
     }
     return userDefaluts;
 }
