@@ -11,11 +11,23 @@ import MockUserDefaults
 
 private let testKey = "MockUserDefaultsTestKey"
 
+private var standardDictionaryRepresentation: [String: Any]!
+
 class MockUserDefaultsSwiftTests: XCTestCase {
     private let userDefaults: UserDefaults = .mocked
 
-    override func setUp() {
+    override static func setUp() {
+        super.setUp()
+        standardDictionaryRepresentation = UserDefaults.standard.dictionaryRepresentation()
+    }
+
+    override func tearDown() {
         UserDefaults.resetMock()
+        XCTAssertNotEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary,
+                          UserDefaults.mocked.dictionaryRepresentation() as NSDictionary)
+        XCTAssertEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary,
+                       standardDictionaryRepresentation as NSDictionary)
+        super.tearDown()
     }
 
     func testObject() {
