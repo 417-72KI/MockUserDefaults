@@ -35,3 +35,44 @@ userDefaults.set("string", forKey: "key")
 
 XCTAssertEqual(userDefaults.string(forKey: "key"), "string")
 ```
+
+## Demo
+### Dependencies
+#### Tool
+- CocoaPods
+  - Bundler
+- Carthage
+  - Homebrew
+- XcodeGen
+  - Mint
+    - Homebrew
+- Fastlane
+  - Bundler
+#### Library
+- R.swift
+- RxSwift
+- RxDataSources
+- Nimble
+- Quick
+
+### Create project
+#### First time
+
+```
+make init_demo_app
+```
+
+#### After the first time
+
+```
+make demo_app
+```
+
+### Usage
+
+1. open `MockUserDefaultsDemo.xcworkspace`
+1. Build and run app (⌘+R) in iPhone / iPad Simulator
+1. Add any keys and values
+1. Run test (⌘+U) in same simulator
+1. Re-run app (⌘+R) in same simulator
+1. You can see that the app isn't affected by the test.
