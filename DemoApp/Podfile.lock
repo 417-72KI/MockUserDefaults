@@ -1,0 +1,27 @@
+PODS:
+  - MockUserDefaults (1.1.0)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
+
+DEPENDENCIES:
+  - MockUserDefaults (from `../`)
+  - R.swift (~> 5.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - R.swift
+    - R.swift.Library
+
+EXTERNAL SOURCES:
+  MockUserDefaults:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MockUserDefaults: 14075edb595feb0168c3745beda5f84b6c19f91a
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+
+PODFILE CHECKSUM: 68bb296fe243d8b71a8007079217e3216acee727
+
+COCOAPODS: 1.7.5

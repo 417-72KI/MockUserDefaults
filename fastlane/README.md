@@ -20,7 +20,12 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane ios test
 ```
-Runs all the unit tests
+Runs all unit tests
+### ios test_demo
+```
+fastlane ios test_demo
+```
+Runs unit tests for DemoApp
 
 ----
 
