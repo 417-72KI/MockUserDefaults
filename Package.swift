@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.1
 import PackageDescription
 
 let package = Package(
@@ -20,7 +20,7 @@ let package = Package(
         ),
         // FIXME: `Type 'UserDefaults' has no member 'mocked'` in test code via Package.swift
         // .testTarget(
-        //     name: "MockUserDefaultsSwift4_2Tests",
+        //     name: "MockUserDefaultsSwift5Tests",
         //     dependencies: ["MockUserDefaults"]
         // ),
     ]
