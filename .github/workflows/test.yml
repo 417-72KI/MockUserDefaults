@@ -6,6 +6,7 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
+      - 'Gemfile.lock'
 jobs:
   xcodeproj:
     name: via Xcode
