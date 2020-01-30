@@ -1,5 +1,5 @@
 name: Test
-on: 
+on:
   pull_request:
     paths:
       - '**.swift'
@@ -15,8 +15,17 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
     steps:
       - uses: actions/checkout@v1
-      - name: Install fastlane 
-        run: bundle install --quiet
+      - name: Cache Bundle
+        uses: actions/cache@v1
+        with:
+          path: vendor
+          key: ${{ runner.os }}-node-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Bundle
+        run: bundle install --quiet --path vendor/bundle
       - name: Run Test
         run: bundle exec fastlane test
   swift_pm:
