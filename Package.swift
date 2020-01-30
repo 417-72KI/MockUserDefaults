@@ -18,10 +18,9 @@ let package = Package(
             name: "MockUserDefaultsTests",
             dependencies: ["MockUserDefaults"]
         ),
-        // FIXME: `Type 'UserDefaults' has no member 'mocked'` in test code via Package.swift
-        // .testTarget(
-        //     name: "MockUserDefaultsSwift5Tests",
-        //     dependencies: ["MockUserDefaults"]
-        // ),
+        .testTarget(
+            name: "MockUserDefaultsSwift5Tests",
+            dependencies: ["MockUserDefaults"]
+        ),
     ]
 )
