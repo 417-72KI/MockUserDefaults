@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setBool:(BOOL)value forKey:(NSString *)defaultName;
 - (void)setURL:(nullable NSURL *)url forKey:(NSString *)defaultName API_AVAILABLE(macos(10.6), ios(4.0), watchos(2.0), tvos(9.0));
 - (NSDictionary<NSString *, id> *)dictionaryRepresentation;
-- (void)synchronize;
+- (BOOL)synchronize;
 @end
 
 NS_ASSUME_NONNULL_END
@@ -168,8 +168,9 @@ NSMutableDictionary *mockDictionary;
     return [mockDictionary copy];
 }
 
-- (void)synchronize
+- (BOOL)synchronize
 {
+    return NO;
 }
 @end
 
