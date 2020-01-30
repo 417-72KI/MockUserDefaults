@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
     s.requires_arc = true
         
     s.source       = { :git => "https://github.com/417-72KI/MockUserDefaults.git", :tag => "#{s.version}" }
-    s.source_files = 'MockUserDefaults/**/*.{h,m}'
-    s.public_header_files = 'MockUserDefaults/**/*.h'
+    s.source_files = 'Sources/MockUserDefaults/**/*.{h,m}'
+    s.public_header_files = 'Sources/MockUserDefaults/**/*.h'
     s.frameworks   = 'Foundation'
 end
     
