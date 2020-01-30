@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/xcode,macos,objective-c
-# Edit at https://www.gitignore.io/?templates=xcode,macos,objective-c
+# Created by https://www.gitignore.io/api/xcode,macos,objective-c,swiftpm
+# Edit at https://www.gitignore.io/?templates=xcode,macos,objective-c,swiftpm
 
 ### macOS ###
 # General
@@ -94,6 +94,12 @@ iOSInjectionProject/
 
 ### Objective-C Patch ###
 
+### SwiftPM ###
+Packages
+.build/
+xcuserdata
+*.xcodeproj
+
 ### Xcode ###
 # Xcode
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -104,12 +110,16 @@ iOSInjectionProject/
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
-### Xcode Patch ###
+## Xcode Patch
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+
+### Xcode Patch ###
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.gitignore.io/api/xcode,macos,objective-c
+# End of https://www.gitignore.io/api/xcode,macos,objective-c,swiftpm
+
+.swiftpm
