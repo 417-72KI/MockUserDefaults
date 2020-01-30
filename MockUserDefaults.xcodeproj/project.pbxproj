@@ -121,7 +121,7 @@
 		21FEC2AE226077A400F55BFB /* MockUserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				21FEC2AF226077A400F55BFB /* MockUserDefaults.h */,
+				4B31E8ED23E272A9005F0D97 /* include */,
 				21FEC2C62260788900F55BFB /* MockUserDefaults.m */,
 				21FEC2B0226077A400F55BFB /* Info.plist */,
 			);
@@ -148,6 +148,14 @@
 			);
 			name = MockUserDefaultsSwift4_2Tests;
 			path = Tests/MockUserDefaultsSwift4_2Tests;
+			sourceTree = "<group>";
+		};
+		4B31E8ED23E272A9005F0D97 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				21FEC2AF226077A400F55BFB /* MockUserDefaults.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		B958A9E32281E3270083624F /* MockUserDefaultsSwift5Tests */ = {
