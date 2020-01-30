@@ -1,13 +1,15 @@
-project_name = MockUserDefaults
+PROJECT_NAME = MockUserDefaults
+
+ver = 1.1.0
 
 test:
 	bundle exec fastlane test
 
 lint:
-	pod spec lint --no-clean --allow-warnings
+	bundle exec pod spec lint --no-clean --allow-warnings
 
-deploy:
-	pod trunk push $(project_name).podspec --allow-warnings
+release:
+	@scripts/release.sh ${PROJECT_NAME} ${ver}
 
 init_demo_app:
 	$(MAKE) -C DemoApp init
