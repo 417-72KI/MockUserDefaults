@@ -12,13 +12,16 @@
 ## Installation
 ### CocoaPods
 ```ruby:Podfile
-pod 'MockUserDefaults', '~> 1.0'
+pod 'MockUserDefaults', '~> 1.2'
 ```
 
 ### Carthage
 ```ruby:Cartfile
-github "417-72KI/MockUserDefaults" ~> 1.0
+github "417-72KI/MockUserDefaults" ~> 1.2
 ```
+
+### SwiftPM (Swift5 only)
+.package(url: "https://github.com/kylef/Commander.git", .upToNextMajor(from: "1.2.0")),
 
 ## Usage
 ### Objective-C
