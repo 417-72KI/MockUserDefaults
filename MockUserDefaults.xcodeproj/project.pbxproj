@@ -121,11 +121,12 @@
 		21FEC2AE226077A400F55BFB /* MockUserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				21FEC2AF226077A400F55BFB /* MockUserDefaults.h */,
+				4B31E8ED23E272A9005F0D97 /* include */,
 				21FEC2C62260788900F55BFB /* MockUserDefaults.m */,
 				21FEC2B0226077A400F55BFB /* Info.plist */,
 			);
-			path = MockUserDefaults;
+			name = MockUserDefaults;
+			path = Sources/MockUserDefaults;
 			sourceTree = "<group>";
 		};
 		21FEC2B9226077A400F55BFB /* MockUserDefaultsTests */ = {
@@ -134,7 +135,8 @@
 				21FEC2BA226077A400F55BFB /* MockUserDefaultsTests.m */,
 				21FEC2BC226077A400F55BFB /* Info.plist */,
 			);
-			path = MockUserDefaultsTests;
+			name = MockUserDefaultsTests;
+			path = Tests/MockUserDefaultsTests;
 			sourceTree = "<group>";
 		};
 		21FEC2DF226094C400F55BFB /* MockUserDefaultsSwift4_2Tests */ = {
@@ -144,7 +146,16 @@
 				B966D29422622FC30009FE75 /* MockUserDefaultsShareTests.swift */,
 				21FEC2E2226094C400F55BFB /* Info.plist */,
 			);
-			path = MockUserDefaultsSwift4_2Tests;
+			name = MockUserDefaultsSwift4_2Tests;
+			path = Tests/MockUserDefaultsSwift4_2Tests;
+			sourceTree = "<group>";
+		};
+		4B31E8ED23E272A9005F0D97 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				21FEC2AF226077A400F55BFB /* MockUserDefaults.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		B958A9E32281E3270083624F /* MockUserDefaultsSwift5Tests */ = {
@@ -154,7 +165,8 @@
 				B958A9ED2281E34C0083624F /* MockUserDefaultsShareTests.swift */,
 				B958A9E62281E3270083624F /* Info.plist */,
 			);
-			path = MockUserDefaultsSwift5Tests;
+			name = MockUserDefaultsSwift5Tests;
+			path = Tests/MockUserDefaultsSwift5Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,7 +513,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MockUserDefaults/Info.plist;
+				INFOPLIST_FILE = Sources/MockUserDefaults/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,7 +537,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MockUserDefaults/Info.plist;
+				INFOPLIST_FILE = Sources/MockUserDefaults/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -544,7 +556,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsTests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -560,7 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsTests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,7 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsSwift4_2Tests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsSwift4_2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MockUserDefaultsSwift4_2Tests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsSwift4_2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,7 +627,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = MockUserDefaultsSwift5Tests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsSwift5Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,7 +648,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = MockUserDefaultsSwift5Tests/Info.plist;
+				INFOPLIST_FILE = Tests/MockUserDefaultsSwift5Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

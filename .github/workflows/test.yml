@@ -1,14 +1,39 @@
 name: Test
-on: [pull_request]
+on:
+  pull_request:
+    paths:
+      - '**.swift'
+      - '**.h'
+      - '**.m'
+      - '.github/workflows/test.yml'
+      - 'Gemfile.lock'
 jobs:
-  test:
-    name: Test
+  xcodeproj:
+    name: via Xcode
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
     steps:
-    - uses: actions/checkout@v1
-    - name: Install fastlane 
-      run: bundle install --quiet
-    - name: Test
-      run: bundle exec fastlane test
+      - uses: actions/checkout@v1
+      - name: Cache Bundle
+        uses: actions/cache@v1
+        with:
+          path: vendor
+          key: ${{ runner.os }}-node-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Bundle
+        run: bundle install --quiet --path vendor/bundle
+      - name: Run Test
+        run: bundle exec fastlane test
+  swift_pm:
+    name: via SwiftPM
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Test
+        run: swift test
