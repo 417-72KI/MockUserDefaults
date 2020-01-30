@@ -1,14 +1,23 @@
 name: Test
 on: [pull_request]
 jobs:
-  test:
-    name: Test
+  xcodeproj:
+    name: via Xcode
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
     steps:
-    - uses: actions/checkout@v1
-    - name: Install fastlane 
-      run: bundle install --quiet
-    - name: Test
-      run: bundle exec fastlane test
+      - uses: actions/checkout@v1
+      - name: Install fastlane 
+        run: bundle install --quiet
+      - name: Run Test
+        run: bundle exec fastlane test
+  swift_pm:
+    name: via SwiftPM
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.3.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Test
+        run: swift test
