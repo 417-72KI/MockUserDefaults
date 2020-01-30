@@ -21,7 +21,7 @@ github "417-72KI/MockUserDefaults" ~> 1.2
 ```
 
 ### SwiftPM (Swift5 only)
-.package(url: "https://github.com/kylef/Commander.git", .upToNextMajor(from: "1.2.0")),
+.package(url: "https://github.com/417-72KI/MockUserDefaults.git", .upToNextMajor(from: "1.2.0")),
 
 ## Usage
 ### Objective-C
