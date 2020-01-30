@@ -1,6 +1,0 @@
-os: osx
-osx_image: xcode10.2
-
-script:
-  - bundle install --quiet
-  - bundle exec fastlane test
