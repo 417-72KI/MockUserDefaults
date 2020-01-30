@@ -174,11 +174,7 @@ NSDictionary *standardDictionaryRepresentation;
 
 - (void)testSynchronize
 {
-    @try {
-        [self.userDefaults synchronize];
-    } @catch (NSException *exception) {
-        XCTFail(@"Something happen in synchronize with expection: %@", exception);
-    }
+    XCTAssertFalse([self.userDefaults synchronize]);
 }
 
 - (void)testDictionaryRepresentation
