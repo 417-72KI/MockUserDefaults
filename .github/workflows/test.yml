@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Cache Bundle
-        id: cache-bundle
         uses: actions/cache@v1
         with:
           path: vendor
@@ -26,7 +25,6 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Install Bundle
-        if: steps.cache-bundle.outputs.cache-hit != 'true'
         run: bundle install --quiet --path vendor/bundle
       - name: Run Test
         run: bundle exec fastlane test
