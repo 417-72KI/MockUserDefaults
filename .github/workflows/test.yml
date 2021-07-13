@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Cache Bundle
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor
           key: ${{ runner.os }}-node-${{ hashFiles('**/Gemfile.lock') }}
