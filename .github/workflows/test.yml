@@ -11,15 +11,18 @@ jobs:
   xcodeproj:
     name: via Xcode
     runs-on: macOS-10.15
+    strategy:
+      matrix:
+        xcode: [11.7, 12.4]
     env:
-      DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Cache Bundle
         uses: actions/cache@v2
         with:
           path: vendor
-          key: ${{ runner.os }}-node-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-xcode-${{ matrix.xcode }}-node-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
@@ -31,8 +34,11 @@ jobs:
   swift_pm:
     name: via SwiftPM
     runs-on: macOS-10.15
+    strategy:
+      matrix:
+        xcode: [11.7, 12.4]
     env:
-      DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Run Test
