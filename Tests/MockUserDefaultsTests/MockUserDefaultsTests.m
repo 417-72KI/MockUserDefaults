@@ -28,14 +28,28 @@ NSDictionary *standardDictionaryRepresentation;
 - (void)setUp
 {
     [super setUp];
-    self.userDefaults = [NSUserDefaults mockedUserDefaults];
+    if (!self.userDefaults) {
+        self.userDefaults = [NSUserDefaults mockedUserDefaults];
+    }
 }
 
 - (void)tearDown
 {
     [NSUserDefaults resetMockedUserDefaults];
+    [super tearDown];
+}
+
++ (void)tearDown
+{
     XCTAssertNotEqualObjects([[NSUserDefaults standardUserDefaults] dictionaryRepresentation], [[NSUserDefaults mockedUserDefaults] dictionaryRepresentation]);
-    XCTAssertEqualObjects([[NSUserDefaults standardUserDefaults] dictionaryRepresentation], standardDictionaryRepresentation);
+
+    // Verify equality without keys start with `XCT`
+    NSMutableDictionary *dic1 = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] mutableCopy];
+    NSMutableDictionary *dic2 = [standardDictionaryRepresentation mutableCopy];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self BEGINSWITH[c] %@", @"XCT"];
+    [dic1 removeObjectsForKeys:[dic1.allKeys filteredArrayUsingPredicate:predicate]];
+    [dic2 removeObjectsForKeys:[dic2.allKeys filteredArrayUsingPredicate:predicate]];
+    XCTAssertEqualObjects(dic1, dic2);
     [super tearDown];
 }
 
