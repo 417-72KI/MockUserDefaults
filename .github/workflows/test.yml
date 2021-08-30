@@ -9,7 +9,7 @@ on:
       - 'Gemfile.lock'
 jobs:
   xcodeproj:
-    name: via Xcode
+    name: via xcodebuild (fastlane)
     runs-on: macOS-10.15
     strategy:
       matrix:
