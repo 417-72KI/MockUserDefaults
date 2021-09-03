@@ -5,11 +5,11 @@
    objects = {
       "MockUserDefaults::MockUserDefaults" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_36";
+         buildConfigurationList = "OBJ_33";
          buildPhases = (
-            "OBJ_39",
-            "OBJ_41",
-            "OBJ_43"
+            "OBJ_36",
+            "OBJ_38",
+            "OBJ_40"
          );
          dependencies = (
          );
@@ -25,25 +25,25 @@
       };
       "MockUserDefaults::MockUserDefaultsPackageTests::ProductTarget" = {
          isa = "PBXAggregateTarget";
-         buildConfigurationList = "OBJ_51";
+         buildConfigurationList = "OBJ_48";
          buildPhases = (
          );
          dependencies = (
-            "OBJ_54",
-            "OBJ_56"
+            "OBJ_51",
+            "OBJ_53"
          );
          name = "MockUserDefaultsPackageTests";
          productName = "MockUserDefaultsPackageTests";
       };
       "MockUserDefaults::MockUserDefaultsSwift5Tests" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_58";
+         buildConfigurationList = "OBJ_55";
          buildPhases = (
-            "OBJ_61",
-            "OBJ_64"
+            "OBJ_58",
+            "OBJ_61"
          );
          dependencies = (
-            "OBJ_66"
+            "OBJ_63"
          );
          name = "MockUserDefaultsSwift5Tests";
          productName = "MockUserDefaultsSwift5Tests";
@@ -57,13 +57,13 @@
       };
       "MockUserDefaults::MockUserDefaultsTests" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_67";
+         buildConfigurationList = "OBJ_64";
          buildPhases = (
-            "OBJ_70",
-            "OBJ_72"
+            "OBJ_67",
+            "OBJ_69"
          );
          dependencies = (
-            "OBJ_74"
+            "OBJ_71"
          );
          name = "MockUserDefaultsTests";
          productName = "MockUserDefaultsTests";
@@ -77,9 +77,9 @@
       };
       "MockUserDefaults::SwiftPMPackageDescription" = {
          isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_45";
+         buildConfigurationList = "OBJ_42";
          buildPhases = (
-            "OBJ_48"
+            "OBJ_45"
          );
          dependencies = (
          );
@@ -101,7 +101,7 @@
             "en"
          );
          mainGroup = "OBJ_5";
-         productRefGroup = "OBJ_21";
+         productRefGroup = "OBJ_18";
          projectDirPath = ".";
          targets = (
             "MockUserDefaults::MockUserDefaults",
@@ -112,90 +112,64 @@
          );
       };
       "OBJ_10" = {
-         isa = "PBXFileReference";
-         path = "MockUserDefaults.m";
-         sourceTree = "<group>";
-      };
-      "OBJ_11" = {
          isa = "PBXGroup";
          children = (
-            "OBJ_12"
+            "OBJ_11"
          );
          name = "include";
          path = "include";
          sourceTree = "<group>";
       };
-      "OBJ_12" = {
+      "OBJ_11" = {
          isa = "PBXFileReference";
          path = "MockUserDefaults.h";
          sourceTree = "<group>";
       };
-      "OBJ_13" = {
+      "OBJ_12" = {
          isa = "PBXGroup";
          children = (
-            "OBJ_14",
-            "OBJ_18"
+            "OBJ_13",
+            "OBJ_16"
          );
          name = "Tests";
          path = "";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_14" = {
+      "OBJ_13" = {
          isa = "PBXGroup";
          children = (
-            "OBJ_15",
-            "OBJ_16",
-            "OBJ_17"
+            "OBJ_14",
+            "OBJ_15"
          );
          name = "MockUserDefaultsSwift5Tests";
          path = "Tests/MockUserDefaultsSwift5Tests";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_15" = {
-         isa = "PBXFileReference";
-         path = "Info.plist";
-         sourceTree = "<group>";
-      };
-      "OBJ_16" = {
+      "OBJ_14" = {
          isa = "PBXFileReference";
          path = "MockUserDefaultsShareTests.swift";
          sourceTree = "<group>";
       };
-      "OBJ_17" = {
+      "OBJ_15" = {
          isa = "PBXFileReference";
          path = "MockUserDefaultsSwiftTests.swift";
          sourceTree = "<group>";
       };
-      "OBJ_18" = {
+      "OBJ_16" = {
          isa = "PBXGroup";
          children = (
-            "OBJ_19",
-            "OBJ_20"
+            "OBJ_17"
          );
          name = "MockUserDefaultsTests";
          path = "Tests/MockUserDefaultsTests";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_19" = {
-         isa = "PBXFileReference";
-         path = "Info.plist";
-         sourceTree = "<group>";
-      };
-      "OBJ_2" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_3",
-            "OBJ_4"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_20" = {
+      "OBJ_17" = {
          isa = "PBXFileReference";
          path = "MockUserDefaultsTests.m";
          sourceTree = "<group>";
       };
-      "OBJ_21" = {
+      "OBJ_18" = {
          isa = "PBXGroup";
          children = (
             "MockUserDefaults::MockUserDefaults::Product",
@@ -206,29 +180,53 @@
          path = "";
          sourceTree = "BUILT_PRODUCTS_DIR";
       };
-      "OBJ_25" = {
+      "OBJ_2" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_3",
+            "OBJ_4"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_22" = {
          isa = "PBXFileReference";
          path = "DemoApp";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_26" = {
+      "OBJ_23" = {
          isa = "PBXFileReference";
          path = "scripts";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_27" = {
+      "OBJ_24" = {
          isa = "PBXFileReference";
          path = "fastlane";
          sourceTree = "SOURCE_ROOT";
       };
-      "OBJ_28" = {
+      "OBJ_25" = {
          isa = "PBXFileReference";
          path = "LICENSE";
          sourceTree = "<group>";
       };
-      "OBJ_29" = {
+      "OBJ_26" = {
          isa = "PBXFileReference";
          path = "renovate.json";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
+         isa = "PBXFileReference";
+         path = "Makefile";
+         sourceTree = "<group>";
+      };
+      "OBJ_28" = {
+         isa = "PBXFileReference";
+         path = "README.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_29" = {
+         isa = "PBXFileReference";
+         path = "Gemfile";
          sourceTree = "<group>";
       };
       "OBJ_3" = {
@@ -270,39 +268,24 @@
       };
       "OBJ_30" = {
          isa = "PBXFileReference";
-         path = "Makefile";
+         path = "Gemfile.lock";
          sourceTree = "<group>";
       };
       "OBJ_31" = {
          isa = "PBXFileReference";
-         path = "README.md";
-         sourceTree = "<group>";
-      };
-      "OBJ_32" = {
-         isa = "PBXFileReference";
-         path = "Gemfile";
-         sourceTree = "<group>";
-      };
-      "OBJ_33" = {
-         isa = "PBXFileReference";
-         path = "Gemfile.lock";
-         sourceTree = "<group>";
-      };
-      "OBJ_34" = {
-         isa = "PBXFileReference";
          path = "MockUserDefaults.podspec";
          sourceTree = "<group>";
       };
-      "OBJ_36" = {
+      "OBJ_33" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_37",
-            "OBJ_38"
+            "OBJ_34",
+            "OBJ_35"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_37" = {
+      "OBJ_34" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -346,7 +329,7 @@
          };
          name = "Debug";
       };
-      "OBJ_38" = {
+      "OBJ_35" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -390,11 +373,30 @@
          };
          name = "Release";
       };
-      "OBJ_39" = {
+      "OBJ_36" = {
          isa = "PBXSourcesBuildPhase";
          files = (
-            "OBJ_40"
+            "OBJ_37"
          );
+      };
+      "OBJ_37" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_9";
+      };
+      "OBJ_38" = {
+         isa = "PBXHeadersBuildPhase";
+         files = (
+            "OBJ_39"
+         );
+      };
+      "OBJ_39" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_11";
+         settings = {
+            ATTRIBUTES = (
+               "Public"
+            );
+         };
       };
       "OBJ_4" = {
          isa = "XCBuildConfiguration";
@@ -430,39 +432,20 @@
          name = "Release";
       };
       "OBJ_40" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_10";
-      };
-      "OBJ_41" = {
-         isa = "PBXHeadersBuildPhase";
-         files = (
-            "OBJ_42"
-         );
-      };
-      "OBJ_42" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_12";
-         settings = {
-            ATTRIBUTES = (
-               "Public"
-            );
-         };
-      };
-      "OBJ_43" = {
          isa = "PBXFrameworksBuildPhase";
          files = (
          );
       };
-      "OBJ_45" = {
+      "OBJ_42" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_46",
-            "OBJ_47"
+            "OBJ_43",
+            "OBJ_44"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_46" = {
+      "OBJ_43" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             LD = "/usr/bin/true";
@@ -480,7 +463,7 @@
          };
          name = "Debug";
       };
-      "OBJ_47" = {
+      "OBJ_44" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             LD = "/usr/bin/true";
@@ -498,76 +481,76 @@
          };
          name = "Release";
       };
-      "OBJ_48" = {
+      "OBJ_45" = {
          isa = "PBXSourcesBuildPhase";
          files = (
-            "OBJ_49"
+            "OBJ_46"
          );
       };
-      "OBJ_49" = {
+      "OBJ_46" = {
          isa = "PBXBuildFile";
          fileRef = "OBJ_6";
+      };
+      "OBJ_48" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_49",
+            "OBJ_50"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_49" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
       };
       "OBJ_5" = {
          isa = "PBXGroup";
          children = (
             "OBJ_6",
             "OBJ_7",
-            "OBJ_13",
-            "OBJ_21",
+            "OBJ_12",
+            "OBJ_18",
+            "OBJ_22",
+            "OBJ_23",
+            "OBJ_24",
             "OBJ_25",
             "OBJ_26",
             "OBJ_27",
             "OBJ_28",
             "OBJ_29",
             "OBJ_30",
-            "OBJ_31",
-            "OBJ_32",
-            "OBJ_33",
-            "OBJ_34"
+            "OBJ_31"
          );
          path = "";
          sourceTree = "<group>";
       };
-      "OBJ_51" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_52",
-            "OBJ_53"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_52" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Debug";
-      };
-      "OBJ_53" = {
+      "OBJ_50" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
          };
          name = "Release";
       };
-      "OBJ_54" = {
+      "OBJ_51" = {
          isa = "PBXTargetDependency";
          target = "MockUserDefaults::MockUserDefaultsTests";
       };
-      "OBJ_56" = {
+      "OBJ_53" = {
          isa = "PBXTargetDependency";
          target = "MockUserDefaults::MockUserDefaultsSwift5Tests";
       };
-      "OBJ_58" = {
+      "OBJ_55" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_59",
-            "OBJ_60"
+            "OBJ_56",
+            "OBJ_57"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_59" = {
+      "OBJ_56" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -607,6 +590,58 @@
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Debug";
+      };
+      "OBJ_57" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            CURRENT_PROJECT_VERSION = "1";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/MockUserDefaults/include"
+            );
+            INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsSwift5Tests_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.15";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "MockUserDefaultsSwift5Tests";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "7.0";
+         };
+         name = "Release";
+      };
+      "OBJ_58" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_59",
+            "OBJ_60"
+         );
+      };
+      "OBJ_59" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_14";
       };
       "OBJ_6" = {
          isa = "PBXFileReference";
@@ -615,85 +650,33 @@
          sourceTree = "<group>";
       };
       "OBJ_60" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_MODULES = "YES";
-            CURRENT_PROJECT_VERSION = "1";
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(SRCROOT)/Sources/MockUserDefaults/include"
-            );
-            INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsSwift5Tests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.15";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "MockUserDefaultsSwift5Tests";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "7.0";
-         };
-         name = "Release";
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_15";
       };
       "OBJ_61" = {
-         isa = "PBXSourcesBuildPhase";
+         isa = "PBXFrameworksBuildPhase";
          files = (
-            "OBJ_62",
-            "OBJ_63"
+            "OBJ_62"
          );
       };
       "OBJ_62" = {
          isa = "PBXBuildFile";
-         fileRef = "OBJ_16";
-      };
-      "OBJ_63" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_17";
-      };
-      "OBJ_64" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_65"
-         );
-      };
-      "OBJ_65" = {
-         isa = "PBXBuildFile";
          fileRef = "MockUserDefaults::MockUserDefaults::Product";
       };
-      "OBJ_66" = {
+      "OBJ_63" = {
          isa = "PBXTargetDependency";
          target = "MockUserDefaults::MockUserDefaults";
       };
-      "OBJ_67" = {
+      "OBJ_64" = {
          isa = "XCConfigurationList";
          buildConfigurations = (
-            "OBJ_68",
-            "OBJ_69"
+            "OBJ_65",
+            "OBJ_66"
          );
          defaultConfigurationIsVisible = "0";
          defaultConfigurationName = "Release";
       };
-      "OBJ_68" = {
+      "OBJ_65" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -734,7 +717,7 @@
          };
          name = "Debug";
       };
-      "OBJ_69" = {
+      "OBJ_66" = {
          isa = "XCBuildConfiguration";
          buildSettings = {
             CLANG_ENABLE_MODULES = "YES";
@@ -774,6 +757,22 @@
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Release";
+      };
+      "OBJ_67" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_68"
+         );
+      };
+      "OBJ_68" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_17";
+      };
+      "OBJ_69" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_70"
+         );
       };
       "OBJ_7" = {
          isa = "PBXGroup";
@@ -785,26 +784,10 @@
          sourceTree = "SOURCE_ROOT";
       };
       "OBJ_70" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_71"
-         );
-      };
-      "OBJ_71" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_20";
-      };
-      "OBJ_72" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_73"
-         );
-      };
-      "OBJ_73" = {
          isa = "PBXBuildFile";
          fileRef = "MockUserDefaults::MockUserDefaults::Product";
       };
-      "OBJ_74" = {
+      "OBJ_71" = {
          isa = "PBXTargetDependency";
          target = "MockUserDefaults::MockUserDefaults";
       };
@@ -812,8 +795,7 @@
          isa = "PBXGroup";
          children = (
             "OBJ_9",
-            "OBJ_10",
-            "OBJ_11"
+            "OBJ_10"
          );
          name = "MockUserDefaults";
          path = "Sources/MockUserDefaults";
@@ -821,7 +803,7 @@
       };
       "OBJ_9" = {
          isa = "PBXFileReference";
-         path = "Info.plist";
+         path = "MockUserDefaults.m";
          sourceTree = "<group>";
       };
    };
