@@ -1,6 +1,6 @@
 //
 //  MockUserDefaultsSwiftTests.swift
-//  MockUserDefaultsSwift5Tests
+//  MockUserDefaultsSwiftTests
 //
 //  Created by 417.72KI on 2019/04/12.
 //  Copyright © 2019 417.72KI. All rights reserved.
@@ -23,10 +23,14 @@ class MockUserDefaultsSwiftTests: XCTestCase {
 
     override func tearDown() {
         UserDefaults.resetMock()
+        super.tearDown()
+    }
+
+    override static func tearDown() {
         XCTAssertNotEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary,
                           UserDefaults.mocked.dictionaryRepresentation() as NSDictionary)
-        XCTAssertEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary,
-                       standardDictionaryRepresentation as NSDictionary)
+        XCTAssertEqualWithoutXCTKeys(UserDefaults.standard.dictionaryRepresentation(),
+                                     standardDictionaryRepresentation)
         super.tearDown()
     }
 
@@ -169,4 +173,15 @@ class MockUserDefaultsSwiftTests: XCTestCase {
         XCTAssertFalse(userDefaults.synchronize())
         // XCTAssertTrue(UserDefaults.standard.synchronize())
     }
+}
+
+private func XCTAssertEqualWithoutXCTKeys(_ a: [String: Any], _ b: [String: Any], file: StaticString = #file, line: UInt = #line) {
+    func removedXCTKeys(_ dic: [String: Any]) -> [String: Any] {
+        var dic = dic
+        dic.keys.filter { $0.starts(with: "XCT") }
+            .forEach { dic.removeValue(forKey: $0) }
+        return dic
+    }
+
+    XCTAssertEqual(removedXCTKeys(a) as NSDictionary, removedXCTKeys(b) as NSDictionary, file: file, line: line)
 }
