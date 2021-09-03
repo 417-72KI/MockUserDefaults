@@ -3,6 +3,11 @@ import PackageDescription
 
 let package = Package(
     name: "MockUserDefaults",
+    platforms: [
+        .macOS(.v10_14),
+        .iOS(.v11),
+        .tvOS(.v13)
+    ],
     products: [
         .library(
             name: "MockUserDefaults",
@@ -19,7 +24,7 @@ let package = Package(
             dependencies: ["MockUserDefaults"]
         ),
         .testTarget(
-            name: "MockUserDefaultsSwift5Tests",
+            name: "MockUserDefaultsSwiftTests",
             dependencies: ["MockUserDefaults"]
         ),
     ]
