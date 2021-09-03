@@ -324,7 +324,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaults";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
          name = "Debug";
@@ -368,7 +368,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaults";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
          name = "Release";
@@ -565,7 +565,7 @@
                "$(SRCROOT)/Sources/MockUserDefaults/include"
             );
             INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsSwiftTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            IPHONEOS_DEPLOYMENT_TARGET = "11.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
                "@loader_path/../Frameworks",
@@ -586,7 +586,7 @@
             );
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "MockUserDefaultsSwiftTests";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Debug";
@@ -606,7 +606,7 @@
                "$(SRCROOT)/Sources/MockUserDefaults/include"
             );
             INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsSwiftTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            IPHONEOS_DEPLOYMENT_TARGET = "11.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
                "@loader_path/../Frameworks",
@@ -627,7 +627,7 @@
             );
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "MockUserDefaultsSwiftTests";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Release";
@@ -692,7 +692,7 @@
                "$(SRCROOT)/Sources/MockUserDefaults/include"
             );
             INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            IPHONEOS_DEPLOYMENT_TARGET = "11.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
                "@loader_path/../Frameworks",
@@ -712,7 +712,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaultsTests";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Debug";
@@ -733,7 +733,7 @@
                "$(SRCROOT)/Sources/MockUserDefaults/include"
             );
             INFOPLIST_FILE = "MockUserDefaults.xcodeproj/MockUserDefaultsTests_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "14.0";
+            IPHONEOS_DEPLOYMENT_TARGET = "11.0";
             LD_RUNPATH_SEARCH_PATHS = (
                "$(inherited)",
                "@loader_path/../Frameworks",
@@ -753,7 +753,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaultsTests";
-            TVOS_DEPLOYMENT_TARGET = "11.0";
+            TVOS_DEPLOYMENT_TARGET = "13.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Release";
