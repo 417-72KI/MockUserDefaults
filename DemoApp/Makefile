@@ -13,7 +13,7 @@ endif
 	$(MAKE) xcode
 
 bundle:
-	bundle install 2>/dev/null
+	bundle install --quiet 2>/dev/null
 
 carthage:
 	mint run Carthage carthage bootstrap --platform iOS --use-xcframeworks --no-use-binaries --cache-builds
