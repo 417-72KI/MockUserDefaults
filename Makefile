@@ -2,10 +2,13 @@ PROJECT_NAME = MockUserDefaults
 
 ver = 1.1.0
 
-test:
+.SILENT:
+bundle:
+	bundle install 2>/dev/null
+test: bundle
 	bundle exec fastlane test
 
-lint:
+lint: bundle
 	bundle exec pod spec lint --no-clean --allow-warnings
 
 release:
@@ -17,5 +20,5 @@ init_demo_app:
 demo_app:
 	$(MAKE) -C DemoApp carthage_boot xcode
 
-test_demo:
+test_demo: bundle
 	bundle exec fastlane test_demo
