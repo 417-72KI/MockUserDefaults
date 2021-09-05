@@ -324,7 +324,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaults";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
          name = "Debug";
@@ -368,7 +368,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaults";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "2.0";
          };
          name = "Release";
@@ -586,7 +586,7 @@
             );
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "MockUserDefaultsSwiftTests";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Debug";
@@ -627,7 +627,7 @@
             );
             SWIFT_VERSION = "5.0";
             TARGET_NAME = "MockUserDefaultsSwiftTests";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Release";
@@ -712,7 +712,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaultsTests";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Debug";
@@ -753,7 +753,7 @@
                "$(inherited)"
             );
             TARGET_NAME = "MockUserDefaultsTests";
-            TVOS_DEPLOYMENT_TARGET = "13.0";
+            TVOS_DEPLOYMENT_TARGET = "11.0";
             WATCHOS_DEPLOYMENT_TARGET = "7.0";
          };
          name = "Release";
