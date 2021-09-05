@@ -1,6 +1,6 @@
 PROJECT_NAME = MockUserDefaults
 
-ver = 1.1.0
+ver = 1.3.0
 
 .SILENT:
 bundle:
