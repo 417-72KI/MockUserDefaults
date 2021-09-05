@@ -4,7 +4,7 @@ ver = 1.1.0
 
 .SILENT:
 bundle:
-	bundle install 2>/dev/null
+	bundle install --quiet 2>/dev/null
 test: bundle
 	bundle exec fastlane test
 
@@ -18,7 +18,7 @@ init_demo_app:
 	$(MAKE) -C DemoApp init
 
 demo_app:
-	$(MAKE) -C DemoApp carthage_boot xcode
+	$(MAKE) -C DemoApp xcode
 
 test_demo: bundle
 	bundle exec fastlane test_demo
