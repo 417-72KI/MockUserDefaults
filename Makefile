@@ -18,7 +18,7 @@ init_demo_app:
 	$(MAKE) -C DemoApp init
 
 demo_app:
-	$(MAKE) -C DemoApp carthage_boot xcode
+	$(MAKE) -C DemoApp xcode
 
 test_demo: bundle
 	bundle exec fastlane test_demo

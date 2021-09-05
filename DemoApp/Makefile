@@ -7,16 +7,12 @@ ifeq (,$(shell which brew))
 endif
 	brew install mint
 endif
-ifeq (,$(shell which carthage))
-	echo 'Carthage not exist'
-	brew install carthage
-endif
 	bundle install
-	$(MAKE) carthage_boot xcode
+	$(MAKE) carthage xcode
 
-carthage_boot:
-	carthage bootstrap --platform iOS --no-use-binaries --cache-builds
-xcode:
+carthage:
+	mint run Carthage carthage bootstrap --platform iOS --no-use-binaries --cache-builds
+xcode: carthage
 	mint run xcodegen
 	bundle exec pod install
 	open MockUserDefaultsDemo.xcworkspace
