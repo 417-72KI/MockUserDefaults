@@ -2,6 +2,7 @@ PROJECT_NAME = MockUserDefaults
 
 ver = 1.1.0
 
+.SILENT:
 test:
 	bundle exec fastlane test
 
