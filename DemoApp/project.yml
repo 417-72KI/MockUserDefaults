@@ -32,8 +32,8 @@ targets:
         CFBundleInfoDictionaryVersion: '6.0'
         CFBundleName: $(PRODUCT_NAME)
         CFBundlePackageType: APPL
-        CFBundleShortVersionString: 1.0.0
-        CFBundleVersion: 1
+        # CFBundleShortVersionString: 1.0.0
+        # CFBundleVersion: 1
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
         UIMainStoryboardFile: Main
@@ -59,11 +59,16 @@ targets:
           PROVISIONING_PROFILE_SPECIFIER: ""
           EXCLUDED_SOURCE_FILE_NAMES: Mock*
     dependencies:
-      - carthage: RxSwift
-      - carthage: RxRelay
-      - carthage: RxCocoa
-      - carthage: RxDataSources
-      - carthage: Differentiator     
+      - framework: "Carthage/Build/RxSwift.xcframework"
+        codeSign: false
+      - framework: "Carthage/Build/RxRelay.xcframework"
+        codeSign: false
+      - framework: "Carthage/Build/RxCocoa.xcframework"
+        codeSign: false
+      - framework: "Carthage/Build/RxDataSources.xcframework"
+        codeSign: false
+      - framework: "Carthage/Build/Differentiator.xcframework"
+        codeSign: false
     preBuildScripts:
       - name: Lint
         script: |
@@ -81,7 +86,9 @@ targets:
   MockUserDefaultsDemoTests:
     type: bundle.unit-test
     platform: iOS
-    sources: MockUserDefaultsDemoTests
+    sources: 
+      - path: MockUserDefaultsDemoTests
+        excludes: [Info.plist] # Workaround: https://github.com/yonaskolb/XcodeGen/issues/1058#issuecomment-820501341
     info:
       path: MockUserDefaultsDemoTests/Info.plist
       properties:
@@ -91,8 +98,8 @@ targets:
         CFBundleInfoDictionaryVersion: 6.0
         CFBundleName: $(PRODUCT_NAME)
         CFBundlePackageType: BNDL
-        CFBundleShortVersionString: 1.0
-        CFBundleVersion: 1
+        # CFBundleShortVersionString: 1.0.0
+        # CFBundleVersion: 1
     settings:
       INFOPLIST_FILE: MockUserDefaultsDemoTests/info.plist
       TEST_HOST: $(BUILT_PRODUCTS_DIR)/MockUserDefaultsDemo.app/MockUserDefaultsDemo
@@ -101,7 +108,11 @@ targets:
       DEVELOPMENT_TEAM: ""
     dependencies:
       - target: MockUserDefaultsDemo
-      - carthage: Quick
-      - carthage: Nimble
-      - carthage: RxTest
-      - carthage: RxBlocking
+      - framework: "Carthage/Build/Quick.xcframework/ios-arm64_i386_x86_64-simulator/Quick.framework"
+        codeSign: false
+      - framework: "Carthage/Build/Nimble.xcframework/ios-arm64_i386_x86_64-simulator/Nimble.framework"
+        codeSign: false
+      - framework: "Carthage/Build/RxTest.xcframework/ios-arm64_i386_x86_64-simulator/RxTest.framework"
+        codeSign: false
+      - framework: "Carthage/Build/RxBlocking.xcframework/ios-arm64_i386_x86_64-simulator/RxBlocking.framework"
+        codeSign: false
