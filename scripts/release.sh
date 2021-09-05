@@ -29,7 +29,28 @@ if ! type "github-release" > /dev/null; then
     go get github.com/aktau/github-release
 fi
 
-# Version
+# Podspec
+MAC_OS_VERSION="$(cat Package.swift | grep '.macOS(.v' | gsed -r "s/\s*\.macOS\(\.v([0-9_]*)\),?/\1/g" | gsed -r "s/_/./g")"
+if [[ "$MAC_OS_VERSION" != *"."* ]]; then
+    MAC_OS_VERSION="${MAC_OS_VERSION}.0"
+fi
+IOS_VERSION="$(cat Package.swift | grep '.iOS(.v' | gsed -r "s/\s*\.iOS\(\.v([0-9_]*)\),?/\1/g" | gsed -r "s/_/./g")"
+if [[ "$IOS_VERSION" != *"."* ]]; then
+    IOS_VERSION="${IOS_VERSION}.0"
+fi
+TV_OS_VERSION="$(cat Package.swift | grep '.tvOS(.v' | gsed -r "s/\s*\.tvOS\(\.v([0-9_]*)\),?/\1/g" | gsed -r "s/_/./g")"
+if [[ "$TV_OS_VERSION" != *"."* ]]; then
+    TV_OS_VERSION="${TV_OS_VERSION}.0"
+fi
+WATCH_OS_VERSION="$(cat Package.swift | grep '.watchOS(.v' | gsed -r "s/\s*\.watchOS\(\.v([0-9_]*)\),?/\1/g" | gsed -r "s/_/./g")"
+if [[ "$WATCH_OS_VERSION" != *"."* ]]; then
+    WATCH_OS_VERSION="${WATCH_OS_VERSION}.0"
+fi
+
+gsed -i -r "s/(s\.osx\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${MAC_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
+gsed -i -r "s/(s\.ios\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${IOS_VERSION}\"/g" ${PROJECT_NAME}.podspec
+gsed -i -r "s/(s\.tvos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${TV_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
+gsed -i -r "s/(s\.watchos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${WATCH_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.version\s*?=\s)\"([0-9]*\.[0-9]*\.[0-9]*?)\"/\1\"${TAG}\"/g" ${PROJECT_NAME}.podspec
 git commit -m "Bump version to ${TAG}" "${PROJECT_NAME}.podspec"
 
