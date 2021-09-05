@@ -11,9 +11,9 @@ endif
 	$(MAKE) carthage xcode
 
 carthage:
-	mint run Carthage carthage bootstrap --platform iOS --no-use-binaries --cache-builds
+	mint run Carthage carthage bootstrap --platform iOS --use-xcframeworks --no-use-binaries --cache-builds
 carthage_update:
-	mint run Carthage carthage update --platform iOS --no-use-binaries --cache-builds
+	mint run Carthage carthage update --platform iOS --use-xcframeworks --no-use-binaries --cache-builds
 xcode: carthage
 	mint run xcodegen
 	bundle exec pod install
