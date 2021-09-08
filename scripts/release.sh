@@ -64,7 +64,7 @@ gsed -i -r "s/(s\.ios\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/
 gsed -i -r "s/(s\.tvos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${TV_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.watchos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${WATCH_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.version\s*?=\s)\"([0-9]*\.[0-9]*\.[0-9]*?)\"/\1\"${TAG}\"/g" ${PROJECT_NAME}.podspec
-git commit -m "Bump version to ${TAG}" "${PROJECT_NAME}.podspec"
+git commit -m "Update podspec\nBump version to ${TAG}" "${PROJECT_NAME}.podspec"
 
 # TAG
 git tag "${TAG}"
