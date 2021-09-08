@@ -1,10 +1,12 @@
 PROJECT_NAME = MockUserDefaults
 
-ver = 1.1.0
+ver = 1.3.0
 
 .SILENT:
+
 bundle:
 	bundle install --quiet 2>/dev/null
+
 test: bundle
 	bundle exec fastlane test
 
