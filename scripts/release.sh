@@ -14,6 +14,18 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+if [ "`git diff --name-only`" != '' ]; then
+    echo '[Error] There are some local changes.'
+    exit 1
+fi
+
+# Validate
+README_VERSION=$(cat README.md | grep '.package(url: ' | awk '{ print $NF }' | sed -E 's/\"(.*)\"\)?\)?,?/\1/')
+if [ "${TAG}" != "${README_VERSION}" ]; then
+    echo '[Error] README.md not updated. Match version in installation.'
+    exit 1
+fi
+
 if git rev-parse "${TAG}" >/dev/null 2>&1; then
     echo "Version \"${TAG}\" already exists."
     exit 1
