@@ -14,17 +14,17 @@
 ## Installation
 ### CocoaPods
 ```ruby:Podfile
-pod 'MockUserDefaults', '~> 1.2'
+pod 'MockUserDefaults'
 ```
 
 ### Carthage
 ```ruby:Cartfile
-github "417-72KI/MockUserDefaults" ~> 1.2
+github "417-72KI/MockUserDefaults"
 ```
 
 ### SwiftPM (Swift5 only)
 ```swift:Package.swift
-.package(url: "https://github.com/417-72KI/MockUserDefaults.git", .upToNextMajor(from: "1.2.0")),
+.package(url: "https://github.com/417-72KI/MockUserDefaults.git", .upToNextMajor(from: "1.3.0")),
 ```
 
 ## Usage
