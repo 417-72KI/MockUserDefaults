@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'renovate.json'
+      - '.github/workflows/renovate.yml'
 jobs:
   verify:
     name: Verify
