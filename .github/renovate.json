@@ -14,6 +14,7 @@
   "enabledManagers": [
       "bundler",
       "cocoapods",
-      "swift"
+      "swift",
+      "foo"
   ]
 }
