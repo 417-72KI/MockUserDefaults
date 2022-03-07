@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "timezone": "Asia/Tokyo",
+  "vulnerabilityAlerts": {
+      "labels": [
+          "security"
+      ]
+  },
+  "labels": [
+      "dependencies"
+  ],
+  "enabledManagers": [
+      "bundler",
+      "github-actions",
+      "swift"
+  ]
+}

@@ -1,0 +1,48 @@
+name: Renovate
+on:
+  pull_request:
+    paths:
+      - 'renovate.json'
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - id: validate
+        # https://trstringer.com/github-actions-multiline-strings/
+        run: |
+          yarn global add renovate
+          renovate-config-validator > validation-result.txt
+      - uses: actions/github-script@v5
+        if: ${{ always() }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            const ids = comments.data
+              .filter(e => e.user.id == 41898282)
+              .map(e => e.id)
+            await Promise.all(ids.map(async (id) => {
+              github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: id,
+              })
+            }))
+
+            const fs = require("fs").promises
+            const result = await fs.readFile('validation-result.txt', 'utf8')
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "## Renovate config validation result\n```" + result.trim() + "\n```"
+            })
