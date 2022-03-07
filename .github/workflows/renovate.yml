@@ -22,11 +22,27 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            })
+            const ids = comments.data
+              .filter(e => e.user.id == 41898282)
+              .map(e => e.id)
+            await Promise.all(ids.map(async (id) => {
+              github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: id,
+              })
+            }))
+
             const fs = require("fs").promises
             const result = await fs.readFile('validation-result.txt', 'utf8')
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: result
+              body: "## Validation result\n```" + result + "\n```"
             })
