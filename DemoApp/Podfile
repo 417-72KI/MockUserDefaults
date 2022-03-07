@@ -6,7 +6,7 @@ target 'MockUserDefaultsDemo' do
   use_frameworks!
 
   # Pods for MockUserDefaultsDemo
-  pod 'R.swift', '~> 5.0'
+  pod 'R.swift', '~> 6.0'
 
   target 'MockUserDefaultsDemoTests' do
     inherit! :search_paths
