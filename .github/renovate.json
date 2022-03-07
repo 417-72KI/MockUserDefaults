@@ -13,8 +13,7 @@
   ],
   "enabledManagers": [
       "bundler",
-      "cocoapods",
-      "swift",
-      "foo"
+      "github-actions",
+      "swift"
   ]
 }
