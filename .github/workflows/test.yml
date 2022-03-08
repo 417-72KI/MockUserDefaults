@@ -8,21 +8,33 @@ on:
       - '.github/workflows/test.yml'
       - 'Gemfile.lock'
 jobs:
+  generate-matrix:
+    name: Generate matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: |
+          matrix=$(cat versions.json | jq -c .)
+          echo "::set-output name=matrix::$matrix"
   xcodeproj:
     name: via xcodebuild (fastlane)
+    needs: generate-matrix
     runs-on: macOS-latest
     strategy:
-      matrix:
-        xcode: [11.7, 12.4, 12.5.1, 13.2.1]
+      fail-fast: false
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Cache Bundle
         uses: actions/cache@v2
         with:
           path: vendor
-          key: ${{ runner.os }}-xcode-${{ matrix.xcode }}-node-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-xcode-${{ matrix.xcode_version }}-node-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
@@ -33,12 +45,13 @@ jobs:
         run: bundle exec fastlane test
   swift_pm:
     name: via SwiftPM
+    needs: generate-matrix
     runs-on: macOS-latest
     strategy:
-      matrix:
-        xcode: [11.7, 12.4, 12.5.1, 13.2.1]
+      fail-fast: false
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Run Test
