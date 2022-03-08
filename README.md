@@ -13,7 +13,7 @@
 ## Installation
 ### SwiftPM (recommended)
 ```swift:Package.swift
-.package(url: "https://github.com/417-72KI/MockUserDefaults.git", from: "1.3.0"),
+.package(url: "https://github.com/417-72KI/MockUserDefaults.git", from: "1.3.1"),
 ```
 
 ### CocoaPods
