@@ -36,9 +36,9 @@ if ! type "gsed" > /dev/null; then
     brew install gnu-sed
 fi
 
-if ! type "github-release" > /dev/null; then
-    echo '`github-release` not found. Install'
-    go get github.com/aktau/github-release
+if ! type "gh" > /dev/null; then
+    echo '`gh` not found. Install'
+    brew install gh
 fi
 
 # Podspec
@@ -65,16 +65,10 @@ gsed -i -r "s/(s\.tvos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"
 gsed -i -r "s/(s\.watchos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${WATCH_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.version\s*?=\s)\"([0-9]*\.[0-9]*\.[0-9]*?)\"/\1\"${TAG}\"/g" ${PROJECT_NAME}.podspec
 git commit -m "Update podspec\nBump version to ${TAG}" "${PROJECT_NAME}.podspec"
-
-# TAG
-git tag "${TAG}"
-git push origin main "${TAG}"
+git push origin main
 
 # GitHub Release
-github-release release \
-    --user 417-72KI \
-    --repo ${PROJECT_NAME} \
-    --tag "${TAG}"
+gh release create "${TAG}"
 
 # CocoaPods
 bundle exec pod trunk push ${PROJECT_NAME}.podspec --allow-warnings
