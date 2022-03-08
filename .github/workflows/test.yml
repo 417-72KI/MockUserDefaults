@@ -8,12 +8,25 @@ on:
       - '.github/workflows/test.yml'
       - 'Gemfile.lock'
 jobs:
+  generate-matrix:
+    name: Generate matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: |
+          matrix=$(cat versions.json | jq -c .)
+          echo "::set-output name=matrix::$matrix"
   xcodeproj:
     name: via xcodebuild (fastlane)
+    needs: generate-matrix
     runs-on: macOS-latest
     strategy:
+      fail-fast: false
       matrix:
-        xcode: [11.7, 12.4, 12.5.1, 13.2.1]
+        xcode: ${{ fromJson(needs.generate-matrix.outputs.matrix.xcode_version) }}
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
@@ -33,10 +46,12 @@ jobs:
         run: bundle exec fastlane test
   swift_pm:
     name: via SwiftPM
+    needs: generate-matrix
     runs-on: macOS-latest
     strategy:
+      fail-fast: false
       matrix:
-        xcode: [11.7, 12.4, 12.5.1, 13.2.1]
+        xcode: ${{ fromJson(needs.generate-matrix.outputs.matrix.xcode_version) }}
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
     steps:
