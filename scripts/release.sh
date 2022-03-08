@@ -1,11 +1,15 @@
 #!/bin/zsh
 
+set -eu
+
 PROJECT_NAME=$1
 TAG=$2
 
+DEBUG=0
+
 if [ `git symbolic-ref --short HEAD` != 'main' ]; then
-    echo '\e[31mRelease job is enabled only in main.\e[m'
-    exit 1
+    echo '\e[33mRelease job is enabled only in main. Run in debug mode\e[m'
+    DEBUG=1
 fi
 
 echo "${TAG}" | grep -wE '([0-9]+)\.([0-9]+)\.([0-9]+)' > /dev/null 2>&1
@@ -14,30 +18,36 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-if [ "`git diff --name-only HEAD`" != '' ]; then
-    echo '[Error] There are some local changes.'
+LOCAL_CHANGES=`git diff --name-only HEAD`
+if [ "$LOCAL_CHANGES" = 'Makefile' ]; then
+    MAKEFILE_DIFF="$(git diff -U0 Makefile | grep '^[+-]' | grep -Ev '^(--- a/|\+\+\+ b/)')"
+    if [ "$(echo $MAKEFILE_DIFF | grep -Ev '^[+-]ver = [0-9]*\.[0-9]*\.[0-9]*$')" != '' ]; then
+        echo '\e[31m[Error] There are some local changes.\e[m'
+        exit 1
+    fi
+elif [ "$LOCAL_CHANGES" != '' ]; then
+    echo '\e[31m[Error] There are some local changes.\e[m'
     exit 1
 fi
 
 # Validate
-README_VERSION=$(cat README.md | grep '.package(url: ' | awk '{ print $NF }' | sed -E 's/\"(.*)\"\)?\)?,?/\1/')
-if [ "${TAG}" != "${README_VERSION}" ]; then
-    echo '[Error] README.md not updated. Match version in installation.'
+if git rev-parse "${TAG}" >/dev/null 2>&1; then
+    echo "\e[31m[Error] Version \"${TAG}\" already exists.\e[m"
     exit 1
 fi
 
-if git rev-parse "${TAG}" >/dev/null 2>&1; then
-    echo "Version \"${TAG}\" already exists."
-    exit 1
+README_VERSION=$(cat README.md | grep '.package(url: ' | awk '{ print $NF }' | sed -E 's/\"(.*)\"\)?\)?,?/\1/')
+if [ "${TAG}" != "${README_VERSION}" ]; then
+    sed -i '' -E "s/(\.package\(url: \".*${PROJECT_NAME}\.git\", from: \").*(\"\),)/\1${TAG}\2/g" README.md
 fi
 
 if ! type "gsed" > /dev/null; then
-    echo '`gsed` not found. Install'
+    echo '\e[33m`gsed` not found. Install\e[m'
     brew install gnu-sed
 fi
 
 if ! type "gh" > /dev/null; then
-    echo '`gh` not found. Install'
+    echo '\e[33m`gh` not found. Install\e[m'
     brew install gh
 fi
 
@@ -64,11 +74,20 @@ gsed -i -r "s/(s\.ios\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/
 gsed -i -r "s/(s\.tvos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${TV_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.watchos\.deployment_target\s*?=\s)\"([0-9]*\.[0-9]*(\.[0-9]*)?)\"/\1\"${WATCH_OS_VERSION}\"/g" ${PROJECT_NAME}.podspec
 gsed -i -r "s/(s\.version\s*?=\s)\"([0-9]*\.[0-9]*\.[0-9]*?)\"/\1\"${TAG}\"/g" ${PROJECT_NAME}.podspec
-git commit -m "Update podspec\nBump version to ${TAG}" "${PROJECT_NAME}.podspec"
-git push origin main
 
-# GitHub Release
-gh release create "${TAG}"
+COMMIT_OPTION=''
+if [ $DEBUG -ne 0 ]; then
+    COMMIT_OPTION='--dry-run'
+fi
 
-# CocoaPods
-bundle exec pod trunk push ${PROJECT_NAME}.podspec --allow-warnings
+git commit $COMMIT_OPTION -m "Bump version to ${TAG}" "${PROJECT_NAME}.podspec" Makefile README.md
+
+if [ $DEBUG -eq 0 ]; then
+    git push origin main
+
+    # GitHub Release
+    gh release create "${TAG}"
+
+    # CocoaPods
+    bundle exec pod trunk push ${PROJECT_NAME}.podspec --allow-warnings
+fi
