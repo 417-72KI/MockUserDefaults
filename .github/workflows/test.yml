@@ -6,6 +6,7 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
+      - 'versions.json'
       - 'Gemfile.lock'
 concurrency: 
   group: ${{ github.ref }}
