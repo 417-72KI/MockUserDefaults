@@ -6,23 +6,39 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
+      - 'versions.json'
       - 'Gemfile.lock'
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  xcodeproj_catalina:
+  generate-matrix:
+    name: Generate matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: |
+          matrix=$(cat versions.json | jq -c .)
+          echo "::set-output name=matrix::$matrix"
+  xcodeproj:
     name: via xcodebuild (fastlane)
-    runs-on: macOS-10.15
+    needs: generate-matrix
+    runs-on: macOS-latest
     strategy:
-      matrix:
-        xcode: [11.7, 12.4]
+      fail-fast: false
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Cache Bundle
         uses: actions/cache@v2
         with:
           path: vendor
-          key: ${{ runner.os }}-xcode-${{ matrix.xcode }}-node-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-xcode-${{ matrix.xcode_version }}-node-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
@@ -31,49 +47,15 @@ jobs:
         run: bundle install --quiet --path vendor/bundle
       - name: Run Test
         run: bundle exec fastlane test
-  swift_pm_catalina:
+  swift_pm:
     name: via SwiftPM
-    runs-on: macOS-10.15
+    needs: generate-matrix
+    runs-on: macOS-latest
     strategy:
-      matrix:
-        xcode: [11.7, 12.4]
+      fail-fast: false
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Test
-        run: swift test
-  xcodeproj_bigsur:
-    name: via xcodebuild (fastlane)
-    runs-on: macOS-11
-    strategy:
-      matrix:
-        xcode: [12.5]
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache Bundle
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-xcode-${{ matrix.xcode }}-node-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Install Bundle
-        run: bundle install --quiet --path vendor/bundle
-      - name: Run Test
-        run: bundle exec fastlane test
-  swift_pm_bigsur:
-    name: via SwiftPM
-    runs-on: macOS-11
-    strategy:
-      matrix:
-        xcode: [12.5]
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Run Test

@@ -11,19 +11,19 @@
 `MockUserDefaults` is a simple replacement for `NSUserDefaults`/`UserDefaults` to make test easier.
 
 ## Installation
+### SwiftPM (recommended)
+```swift:Package.swift
+.package(url: "https://github.com/417-72KI/MockUserDefaults.git", from: "1.3.0"),
+```
+
 ### CocoaPods
 ```ruby:Podfile
 pod 'MockUserDefaults'
 ```
 
-### Carthage
+### Carthage (deprecated, will drop support in 2.0.0)
 ```ruby:Cartfile
 github "417-72KI/MockUserDefaults"
-```
-
-### SwiftPM (Swift5 only)
-```swift:Package.swift
-.package(url: "https://github.com/417-72KI/MockUserDefaults.git", .upToNextMajor(from: "1.3.0")),
 ```
 
 ## Usage
