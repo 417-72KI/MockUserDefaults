@@ -16,6 +16,18 @@ lint: bundle
 release:
 	@scripts/release.sh ${PROJECT_NAME} ${ver}
 
+ignore:
+	curl -sS -L https://www.gitignore.io/api/swift,swiftpm,xcode,macos \
+	| sed -E 's/^# (Pods\/)/\1/g' \
+	| sed -E 's/^# (Carthage\/)/\1/g' \
+	| sed -E 's/^(Carthage\/).*/\1/g' \
+	| sed -E 's/^# (\.swiftpm)/\1/g' \
+	| sed 's/^\*.xcodeproj$$//g' \
+	| sed '/^#/d' \
+	| awk '(/^$$/ || !a[$$0]++){print}' \
+	| uniq \
+	> .gitignore
+
 init_demo_app:
 	$(MAKE) -C DemoApp init
 
