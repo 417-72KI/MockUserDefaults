@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-if [ "`git diff --name-only`" != '' ]; then
+if [ "`git diff --name-only HEAD`" != '' ]; then
     echo '[Error] There are some local changes.'
     exit 1
 fi
