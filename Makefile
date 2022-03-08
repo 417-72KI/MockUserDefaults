@@ -23,6 +23,7 @@ ignore:
 	| sed -E 's/^(Carthage\/).*/\1/g' \
 	| sed -E 's/^# (\.swiftpm)/\1/g' \
 	| sed 's/^\*.xcodeproj$$//g' \
+	| sed '/^#/d' \
 	| awk '(/^$$/ || !a[$$0]++){print}' \
 	| uniq \
 	> .gitignore
