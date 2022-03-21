@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Cache Bundle
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor
           key: ${{ runner.os }}-xcode-${{ matrix.xcode_version }}-node-${{ hashFiles('**/Gemfile.lock') }}
