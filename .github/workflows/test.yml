@@ -6,9 +6,7 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
-      - 'fastlane/Fastfile'
       - 'versions.json'
-      - 'Gemfile.lock'
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true
