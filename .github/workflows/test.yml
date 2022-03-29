@@ -6,6 +6,7 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
+      - 'fastlane/Fastfile'
       - 'versions.json'
       - 'Gemfile.lock'
 concurrency: 
@@ -18,13 +19,13 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: set-matrix
         run: |
           matrix=$(cat versions.json | jq -c .)
           echo "::set-output name=matrix::$matrix"
-  xcodeproj:
-    name: via xcodebuild (fastlane)
+  xcodebuild:
+    name: via xcodebuild
     needs: generate-matrix
     runs-on: macOS-latest
     strategy:
@@ -34,19 +35,16 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
-      - name: Cache Bundle
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: ${{ runner.os }}-xcode-${{ matrix.xcode_version }}-node-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Install Bundle
-        run: bundle install --quiet --path vendor/bundle
       - name: Run Test
-        run: bundle exec fastlane test
+        run: |
+          xcrun xcodebuild \
+            -scheme MockUserDefaults \
+            -destination 'platform=macOS' \
+            -destination 'platform=macOS,variant=Mac Catalyst' \
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
+            -destination 'platform=tvOS Simulator,name=Apple TV' \
+            -destination 'platform=watchOS Simulator,name=Apple Watch Series 4 - 40mm' \
+            test | xcpretty
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
