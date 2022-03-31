@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     private let bag = DisposeBag()
 
     private let dataSource = RxTableViewSectionedReloadDataSource<SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.cell, for: indexPath) else { fatalError("No cell") }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = item.key
         cell.detailTextLabel?.text = item.value
         return cell

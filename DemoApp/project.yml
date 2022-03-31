@@ -20,9 +20,6 @@ targets:
     deploymentTarget: 11.0
     sources: 
       - MockUserDefaultsDemo
-      - path: Libs/R_swift/R.generated.swift
-        optional: true
-        createIntermediateGroups: true
     info:
       path: MockUserDefaultsDemo/Resources/Info.plist
       properties:
@@ -77,12 +74,6 @@ targets:
                 else
                 echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
                 fi
-      - name: R.swift
-        script: ${PODS_ROOT}/R.swift/rswift generate ${SRCROOT}/Libs/R_swift/R.generated.swift
-        inputFiles:
-          - $(TEMP_DIR)/rswift-lastrun
-        outputFiles:
-          - $(SRCROOT)/Libs/R_swift/R.generated.swift
   MockUserDefaultsDemoTests:
     type: bundle.unit-test
     platform: iOS
