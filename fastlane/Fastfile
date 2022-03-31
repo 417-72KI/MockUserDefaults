@@ -7,6 +7,7 @@ platform :ios do
     scan(
       workspace: 'DemoApp/MockUserDefaultsDemo.xcworkspace',
       scheme: 'MockUserDefaultsDemo',
+      skip_package_dependencies_resolution: true,
       clean: true
     )
   end
