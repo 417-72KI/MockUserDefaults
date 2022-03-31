@@ -6,54 +6,70 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
-import RxCocoa
-import RxSwift
+import Combine
 import UIKit
 
-class DetailViewController: UIViewController, HasModel {
+final class DetailViewController: UIViewController, HasModel {
 
     var model: Model {
-        get { return viewModel.model }
+        get { viewModel.model }
         set { viewModel.model = newValue }
     }
 
     private let viewModel = DetailViewModel()
-    private let bag = DisposeBag()
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: Outlets
     @IBOutlet private weak var keyLabel: UILabel!
-    @IBOutlet private weak var keyTextField: UITextField!
-    @IBOutlet private weak var valueTextField: UITextField!
-    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var keyTextField: UITextField! {
+        didSet {
+            keyTextField.textPublisher
+                .sink { [weak viewModel] in viewModel?.model.key = $0 }
+                .store(in: &cancellables)
+        }
+    }
+    @IBOutlet private weak var valueTextField: UITextField! {
+        didSet {
+            valueTextField.textPublisher
+                .sink { [weak viewModel] in viewModel?.model.value = $0 }
+                .store(in: &cancellables)
+        }
+    }
+    @IBOutlet private weak var saveButton: UIButton! {
+        didSet {
+            saveButton.publisher(for: .touchUpInside)
+                .sink(receiveValue: { [weak viewModel] in viewModel?.save() })
+                .store(in: &cancellables)
+        }
+    }
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bag.insert(
-            viewModel.rx.model.map { $0.key }
-                .bind(to: keyLabel.rx.text),
-            viewModel.rx.model.map { $0.key }
-                .bind(to: keyTextField.rx.text),
-            viewModel.rx.model.map { $0.value }
-                .bind(to: valueTextField.rx.text),
-            viewModel.rx.completed
-                .subscribe(onNext: { [unowned self] in self.back() }),
-            keyTextField.rx.text.map { $0 ?? "" }
-                .subscribe(onNext: { [viewModel] in
-                    viewModel.model.key = $0
-                }),
-            keyTextField.rx.text.map { !($0 ?? "").isEmpty }
-                .bind(to: saveButton.rx.isEnabled),
-            valueTextField.rx.text
-                .subscribe(onNext: { [viewModel] in
-                    viewModel.model.value = $0
-                }),
-            saveButton.rx.tap
-                .subscribe(onNext: { [viewModel] in viewModel.save() })
-        )
+        let model = viewModel.modelPublisher
+        let key = model.map(\.key)
+            .map(Optional.some)
+        key.assign(to: \.text, on: keyLabel)
+            .store(in: &cancellables)
+        key.assign(to: \.text, on: keyTextField)
+            .store(in: &cancellables)
 
-        keyLabel.isHidden = model.key.isEmpty
+        model.map(\.value)
+            .assign(to: \.text, on: valueTextField)
+            .store(in: &cancellables)
+
+        keyTextField.textPublisher
+            .map(\.isEmpty)
+            .map(!)
+            .assign(to: \.isEnabled, on: saveButton)
+            .store(in: &cancellables)
+
+        viewModel.completed
+            .sink(receiveValue: { [weak self] in self?.back() })
+            .store(in: &cancellables)
+
+        keyLabel.isHidden = viewModel.model.key.isEmpty
         keyTextField.isHidden = !keyLabel.isHidden
     }
 }

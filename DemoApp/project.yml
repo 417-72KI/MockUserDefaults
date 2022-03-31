@@ -6,23 +6,23 @@ configs:
   Release: release
 settings:
   base:
-    IPHONEOS_DEPLOYMENT_TARGET: 11.0
+    IPHONEOS_DEPLOYMENT_TARGET: 15.0
     SWIFT_VERSION: 5.0
     ALWAYS_SEARCH_USER_PATHS: false
     CLANG_ENABLE_OBJC_ARC: true
 options:
   xcodeVersion: 10.2
   bundleIdPrefix: io.github.417-72KI
+packages:
+  MockUserDefaults:
+    path: '../'
 targets:
   MockUserDefaultsDemo:
     type: application
     platform: iOS
-    deploymentTarget: 11.0
+    deploymentTarget: 15.0
     sources: 
       - MockUserDefaultsDemo
-      - path: Libs/R_swift/R.generated.swift
-        optional: true
-        createIntermediateGroups: true
     info:
       path: MockUserDefaultsDemo/Resources/Info.plist
       properties:
@@ -58,17 +58,6 @@ targets:
           CODE_SIGN_IDENTITY: iPhone Distribution
           PROVISIONING_PROFILE_SPECIFIER: ""
           EXCLUDED_SOURCE_FILE_NAMES: Mock*
-    dependencies:
-      - framework: "Carthage/Build/RxSwift.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxRelay.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxCocoa.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxDataSources.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/Differentiator.xcframework"
-        codeSign: false
     preBuildScripts:
       - name: Lint
         script: |
@@ -77,12 +66,6 @@ targets:
                 else
                 echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
                 fi
-      - name: R.swift
-        script: ${PODS_ROOT}/R.swift/rswift generate ${SRCROOT}/Libs/R_swift/R.generated.swift
-        inputFiles:
-          - $(TEMP_DIR)/rswift-lastrun
-        outputFiles:
-          - $(SRCROOT)/Libs/R_swift/R.generated.swift
   MockUserDefaultsDemoTests:
     type: bundle.unit-test
     platform: iOS
@@ -108,11 +91,4 @@ targets:
       DEVELOPMENT_TEAM: ""
     dependencies:
       - target: MockUserDefaultsDemo
-      - framework: "Carthage/Build/Quick.xcframework/ios-arm64_i386_x86_64-simulator/Quick.framework"
-        codeSign: false
-      - framework: "Carthage/Build/Nimble.xcframework/ios-arm64_i386_x86_64-simulator/Nimble.framework"
-        codeSign: false
-      - framework: "Carthage/Build/RxTest.xcframework/ios-arm64_i386_x86_64-simulator/RxTest.framework"
-        codeSign: false
-      - framework: "Carthage/Build/RxBlocking.xcframework/ios-arm64_i386_x86_64-simulator/RxBlocking.framework"
-        codeSign: false
+      - package: MockUserDefaults

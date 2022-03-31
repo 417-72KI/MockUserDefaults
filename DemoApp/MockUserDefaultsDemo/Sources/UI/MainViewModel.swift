@@ -6,39 +6,26 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
+import Combine
 import Foundation
-import RxRelay
-import RxSwift
 
+@MainActor
 final class MainViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
-    private let bag = DisposeBag()
-    fileprivate let modelRelay = BehaviorRelay<[Model]>(value: [])
-    fileprivate let errorRelay = PublishRelay<Error>()
+    private let _model = CurrentValueSubject<[Model], Never>([])
+}
+
+extension MainViewModel {
+    var models: [Model] { _model.value }
+    var modelPublisher: AnyPublisher<[Model], Never> { _model.eraseToAnyPublisher() }
 }
 
 extension MainViewModel {
     func fetch() {
-        useCase.fetchAll()
-            .subscribe(
-                onSuccess: { [modelRelay] in modelRelay.accept($0) },
-                onError: { [errorRelay] in errorRelay.accept($0) }
-            )
-            .disposed(by: bag)
-    }
-}
-
-// MARK: Rx extensions
-extension MainViewModel: ReactiveCompatible {
-}
-
-extension Reactive where Base == MainViewModel {
-    var model: Observable<[Model]> {
-        return base.modelRelay.asObservable()
-    }
-
-    var error: Observable<Error> {
-        return base.errorRelay.asObservable()
+        Task {
+            let models = await useCase.fetchAll()
+            _model.send(models)
+        }
     }
 }
