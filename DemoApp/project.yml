@@ -13,6 +13,9 @@ settings:
 options:
   xcodeVersion: 10.2
   bundleIdPrefix: io.github.417-72KI
+packages:
+  MockUserDefaults:
+    path: '../'
 targets:
   MockUserDefaultsDemo:
     type: application
@@ -99,6 +102,7 @@ targets:
       DEVELOPMENT_TEAM: ""
     dependencies:
       - target: MockUserDefaultsDemo
+      - package: MockUserDefaults
       - framework: "Carthage/Build/RxTest.xcframework/ios-arm64_i386_x86_64-simulator/RxTest.framework"
         codeSign: false
       - framework: "Carthage/Build/RxBlocking.xcframework/ios-arm64_i386_x86_64-simulator/RxBlocking.framework"
