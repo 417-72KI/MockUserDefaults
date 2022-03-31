@@ -13,5 +13,5 @@ endif
 	$(MAKE) xcode
 
 xcode:
-	mint run xcodegen
+	mint run xcodegen xcodegen generate --spec App/project.yml
 	open MockUserDefaultsDemo.xcworkspace

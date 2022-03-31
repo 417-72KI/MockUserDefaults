@@ -11,11 +11,11 @@ settings:
     ALWAYS_SEARCH_USER_PATHS: false
     CLANG_ENABLE_OBJC_ARC: true
 options:
-  xcodeVersion: 10.2
+  xcodeVersion: 13.2
   bundleIdPrefix: io.github.417-72KI
 packages:
   MockUserDefaults:
-    path: '../'
+    path: '../../'
 targets:
   MockUserDefaultsDemo:
     type: application
