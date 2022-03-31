@@ -1,5 +1,2 @@
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxDataSources"
-
-github "Quick/Nimble"
-github "Quick/Quick"
