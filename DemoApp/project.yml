@@ -6,7 +6,7 @@ configs:
   Release: release
 settings:
   base:
-    IPHONEOS_DEPLOYMENT_TARGET: 11.0
+    IPHONEOS_DEPLOYMENT_TARGET: 15.0
     SWIFT_VERSION: 5.0
     ALWAYS_SEARCH_USER_PATHS: false
     CLANG_ENABLE_OBJC_ARC: true
@@ -20,7 +20,7 @@ targets:
   MockUserDefaultsDemo:
     type: application
     platform: iOS
-    deploymentTarget: 11.0
+    deploymentTarget: 15.0
     sources: 
       - MockUserDefaultsDemo
     info:
@@ -58,17 +58,6 @@ targets:
           CODE_SIGN_IDENTITY: iPhone Distribution
           PROVISIONING_PROFILE_SPECIFIER: ""
           EXCLUDED_SOURCE_FILE_NAMES: Mock*
-    dependencies:
-      - framework: "Carthage/Build/RxSwift.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxRelay.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxCocoa.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/RxDataSources.xcframework"
-        codeSign: false
-      - framework: "Carthage/Build/Differentiator.xcframework"
-        codeSign: false
     preBuildScripts:
       - name: Lint
         script: |
@@ -103,7 +92,3 @@ targets:
     dependencies:
       - target: MockUserDefaultsDemo
       - package: MockUserDefaults
-      - framework: "Carthage/Build/RxTest.xcframework/ios-arm64_i386_x86_64-simulator/RxTest.framework"
-        codeSign: false
-      - framework: "Carthage/Build/RxBlocking.xcframework/ios-arm64_i386_x86_64-simulator/RxBlocking.framework"
-        codeSign: false

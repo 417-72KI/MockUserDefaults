@@ -12,16 +12,6 @@ endif
 	bundle install
 	$(MAKE) xcode
 
-bundle:
-	bundle install --quiet 2>/dev/null
-
-carthage:
-	mint run Carthage carthage bootstrap --platform iOS --use-xcframeworks --no-use-binaries --cache-builds
-
-carthage_update:
-	mint run Carthage carthage update --platform iOS --use-xcframeworks --no-use-binaries --cache-builds
-
-xcode: bundle carthage
+xcode:
 	mint run xcodegen
-	bundle exec pod install
 	open MockUserDefaultsDemo.xcworkspace
