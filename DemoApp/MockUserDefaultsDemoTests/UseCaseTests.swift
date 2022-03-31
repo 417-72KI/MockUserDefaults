@@ -7,9 +7,6 @@
 //
 
 import XCTest
-import RxBlocking
-import RxTest
-
 import MockUserDefaults
 
 @testable import MockUserDefaultsDemo
@@ -21,7 +18,7 @@ class UseCaseTests: XCTestCase, UsesUseCase {
         UserDefaults.resetMock()
     }
 
-    func testExample() {
+    func testExample() async {
         let expected = [
             Model(key: "1", value: "高海千歌"),
             Model(key: "2", value: "桜内梨子"),
@@ -35,7 +32,8 @@ class UseCaseTests: XCTestCase, UsesUseCase {
         ]
         expected.forEach(useCase.save)
 
-        XCTAssertEqual(try useCase.fetchAll().toBlocking().single(), expected)
+        let actual = await useCase.fetchAll()
+        XCTAssertEqual(actual, expected)
     }
 }
 
