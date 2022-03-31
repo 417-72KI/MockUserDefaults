@@ -6,37 +6,26 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
-import RxCocoa
-import RxDataSources
-import RxSwift
+import Combine
 import UIKit
 
 class MainViewController: UIViewController {
-
     private let viewModel = MainViewModel()
-    private let bag = DisposeBag()
-
-    private let dataSource = RxTableViewSectionedReloadDataSource<SectionModel>(configureCell: { _, tableView, indexPath, item -> UITableViewCell in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = item.key
-        cell.detailTextLabel?.text = item.value
-        return cell
-    })
-
+    private var cancellables: Set<AnyCancellable> = []
     private var notificationObserver: NSObjectProtocol?
 
     // MARK: Outlets
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet { tableView.dataSource = self }
+    }
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        bag.insert(
-            viewModel.rx.model
-                .map { [SectionModel(header: nil, items: $0)] }
-                .bind(to: tableView.rx.items(dataSource: dataSource))
-        )
+
+        viewModel.modelPublisher
+            .sink { [weak tableView] _ in tableView?.reloadData() }
+            .store(in: &cancellables)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +55,22 @@ class MainViewController: UIViewController {
         if var hasModel = segue.destination as? HasModel,
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell) {
-            hasModel.model = dataSource[indexPath]
+            hasModel.model = viewModel.models[indexPath.row]
         }
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.models.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = viewModel.models[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = item.key
+        cell.detailTextLabel?.text = item.value
+        return cell
     }
 }

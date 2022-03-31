@@ -14,7 +14,9 @@ protocol UsesUseCase {
 }
 
 protocol UseCase: UsesUserDefaults {
+    @available(*, deprecated, message: "Use concurrency")
     func fetchAll() -> Single<[Model]>
+    func fetchAll() async -> [Model]
     func save(_ model: Model)
 }
 
@@ -30,6 +32,17 @@ extension UseCase {
             event(.success(dictionary.mapValues { "\($0)" }.map(Model.init).sorted()))
             return Disposables.create()
         }
+    }
+
+    func fetchAll() async -> [Model] {
+        userDefaults.dictionaryRepresentation()
+            .filter { !$0.key.starts(with: "NS") && !$0.key.starts(with: "Apple") } // Exclude System keys
+            .filter { !["AddingEmojiKeybordHandled",
+                        "PKKeychainVersionKey",
+                        "AKLastIDMSEnvironment"].contains($0.key) }
+            .mapValues { "\($0)" }
+            .map(Model.init)
+            .sorted()
     }
 
     func save(_ model: Model) {
