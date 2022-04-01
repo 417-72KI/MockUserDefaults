@@ -9,7 +9,6 @@ ifeq (,$(shell which brew))
 endif
 	brew install mint
 endif
-	bundle install
 	$(MAKE) xcode
 
 xcode:
