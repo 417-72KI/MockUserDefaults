@@ -10,18 +10,21 @@ import Combine
 import Foundation
 
 @MainActor
-final class MainViewModel: UsesUseCase {
+public final class MainViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
     private let _model = CurrentValueSubject<[Model], Never>([])
+
+    public init() {
+    }
 }
 
-extension MainViewModel {
+public extension MainViewModel {
     var models: [Model] { _model.value }
     var modelPublisher: AnyPublisher<[Model], Never> { _model.eraseToAnyPublisher() }
 }
 
-extension MainViewModel {
+public extension MainViewModel {
     func fetch() {
         Task {
             let models = await useCase.fetchAll()

@@ -10,7 +10,7 @@
 import Combine
 import UIKit
 
-extension UIControl {
+public extension UIControl {
     func publisher(for event: UIControl.Event) -> AnyPublisher<Void, Never> {
         InteractionPublisher(control: self, event: event)
             .eraseToAnyPublisher()

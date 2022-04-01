@@ -6,9 +6,9 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
-#if canImport(UIKit)
 import Combine
 import UIKit
+import MockUserDefaultsDemoLib
 
 public var mainView: some UIViewController {
     UIStoryboard(name: "Main", bundle: Bundle.module)
@@ -80,4 +80,3 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 }
-#endif

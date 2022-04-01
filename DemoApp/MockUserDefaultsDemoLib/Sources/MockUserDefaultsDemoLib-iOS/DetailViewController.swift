@@ -6,9 +6,9 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
-#if canImport(UIKit)
 import Combine
 import UIKit
+import MockUserDefaultsDemoLib
 
 final class DetailViewController: UIViewController, HasModel {
 
@@ -74,4 +74,3 @@ final class DetailViewController: UIViewController, HasModel {
         keyTextField.isHidden = !keyLabel.isHidden
     }
 }
-#endif

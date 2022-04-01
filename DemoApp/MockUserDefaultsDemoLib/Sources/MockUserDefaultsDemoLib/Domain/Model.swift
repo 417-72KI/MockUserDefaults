@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Model {
-    var key: String
-    var value: String?
+public struct Model {
+    public var key: String
+    public var value: String?
 }
 
 extension Model: Equatable {
 }
 
 extension Model: Comparable {
-    static func < (lhs: Model, rhs: Model) -> Bool {
+    public static func < (lhs: Model, rhs: Model) -> Bool {
         return lhs.key < rhs.key
     }
 }
 
-protocol HasModel {
+public protocol HasModel {
     var model: Model { get set }
 }

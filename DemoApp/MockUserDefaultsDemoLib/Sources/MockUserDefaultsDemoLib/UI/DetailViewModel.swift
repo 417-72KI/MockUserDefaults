@@ -9,14 +9,17 @@
 import Combine
 import Foundation
 
-final class DetailViewModel: UsesUseCase {
+public final class DetailViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
     private let _model = CurrentValueSubject<Model, Never>(.init(key: "", value: nil))
     private let _completed = PassthroughSubject<Void, Never>()
+
+    public init() {
+    }
 }
 
-extension DetailViewModel {
+public extension DetailViewModel {
     var model: Model {
         get { _model.value }
         set { _model.send(newValue) }
@@ -26,7 +29,7 @@ extension DetailViewModel {
     var completed: AnyPublisher<Void, Never> { _completed.eraseToAnyPublisher() }
 }
 
-extension DetailViewModel {
+public extension DetailViewModel {
     func save() {
         useCase.save(model)
         _completed.send()

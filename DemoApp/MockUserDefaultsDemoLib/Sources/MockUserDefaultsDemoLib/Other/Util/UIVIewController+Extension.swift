@@ -6,9 +6,10 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     func back() {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)
@@ -17,3 +18,4 @@ extension UIViewController {
         }
     }
 }
+#endif

@@ -14,7 +14,7 @@
 		4B0F146127F706F200B5027D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0F144F27F706F200B5027D /* Assets.xcassets */; };
 		4B0F146227F706F200B5027D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0F144F27F706F200B5027D /* Assets.xcassets */; };
 		4B0F148D27F707C200B5027D /* MainWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F148C27F707C200B5027D /* MainWrapperView.swift */; };
-		4B0F149327F70BF600B5027D /* MockUserDefaultsDemoLib in Frameworks */ = {isa = PBXBuildFile; productRef = 4B0F149227F70BF600B5027D /* MockUserDefaultsDemoLib */; };
+		4B0F149527F7151300B5027D /* MockUserDefaultsDemoLib-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B0F149327F70BF600B5027D /* MockUserDefaultsDemoLib in Frameworks */,
+				4B0F149527F7151300B5027D /* MockUserDefaultsDemoLib-iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 			);
 			name = "MockUserDefaultsDemo (iOS)";
 			packageProductDependencies = (
-				4B0F149227F70BF600B5027D /* MockUserDefaultsDemoLib */,
+				4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */,
 			);
 			productName = "MockUserDefaultsDemo (iOS)";
 			productReference = 4B0F145427F706F200B5027D /* MockUserDefaultsDemo.app */;
@@ -482,9 +482,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4B0F149227F70BF600B5027D /* MockUserDefaultsDemoLib */ = {
+		4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = MockUserDefaultsDemoLib;
+			productName = "MockUserDefaultsDemoLib-iOS";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

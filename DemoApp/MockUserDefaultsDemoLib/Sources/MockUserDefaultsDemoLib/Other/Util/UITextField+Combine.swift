@@ -6,10 +6,11 @@
 //  Copyright © 2022 417.72KI. All rights reserved.
 //
 
+#if canImport(UIKit)
 import Combine
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     var textPublisher: AnyPublisher<String, Never> {
         NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: self)
@@ -17,3 +18,4 @@ extension UITextField {
             .eraseToAnyPublisher()
     }
 }
+#endif

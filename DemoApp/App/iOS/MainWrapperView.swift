@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MockUserDefaultsDemoLib
+import MockUserDefaultsDemoLib_iOS
 
 struct MainWrapperView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
