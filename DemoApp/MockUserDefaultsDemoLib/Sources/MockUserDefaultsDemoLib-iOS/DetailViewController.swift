@@ -10,15 +10,19 @@ import Combine
 import UIKit
 import MockUserDefaultsDemoLib
 
-final class DetailViewController: UIViewController, HasModel {
+final class DetailViewController: UIViewController {
 
-    var model: Model {
-        get { viewModel.model }
-        set { viewModel.model = newValue }
+    private let viewModel: DetailViewModel
+    private var cancellables: Set<AnyCancellable> = []
+
+    init?(coder: NSCoder, viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
     }
 
-    private let viewModel = DetailViewModel()
-    private var cancellables: Set<AnyCancellable> = []
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
 
     // MARK: Outlets
     @IBOutlet private weak var keyLabel: UILabel!

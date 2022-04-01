@@ -12,10 +12,11 @@ import Foundation
 public final class DetailViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
-    private let _model = CurrentValueSubject<Model, Never>(.init(key: "", value: nil))
+    private let _model: CurrentValueSubject<Model, Never>
     private let _completed = PassthroughSubject<Void, Never>()
 
-    public init() {
+    public init(model: Model = .init(key: "", value: nil)) {
+        self._model = .init(model)
     }
 }
 

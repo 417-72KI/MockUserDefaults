@@ -16,9 +16,19 @@ public var mainView: some UIViewController {
 }
 
 final class MainViewController: UIViewController {
-    private let viewModel = MainViewModel()
+    private let viewModel: MainViewModel
     private var cancellables: Set<AnyCancellable> = []
     private var notificationObserver: NSObjectProtocol?
+
+    init?(coder: NSCoder, viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        self.viewModel = MainViewModel()
+        super.init(coder: coder)
+    }
 
     // MARK: Outlets
     @IBOutlet private weak var tableView: UITableView! {
@@ -57,12 +67,18 @@ final class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var hasModel = segue.destination as? HasModel,
-            let cell = sender as? UITableViewCell,
-            let indexPath = tableView.indexPath(for: cell) {
-            hasModel.model = viewModel.models[indexPath.row]
-        }
+    @IBSegueAction
+    func add(_ coder: NSCoder) -> DetailViewController? {
+        return DetailViewController(coder: coder,
+                                    viewModel: .init(model: .init()))
+
+    }
+
+    @IBSegueAction
+    private func edit(_ coder: NSCoder) -> DetailViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
+        return DetailViewController(coder: coder,
+                                    viewModel: .init(model: viewModel.models[indexPath.row]))
     }
 }
 
