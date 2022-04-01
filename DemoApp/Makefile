@@ -9,9 +9,7 @@ ifeq (,$(shell which brew))
 endif
 	brew install mint
 endif
-	bundle install
 	$(MAKE) xcode
 
 xcode:
-	mint run xcodegen
-	open MockUserDefaultsDemo.xcworkspace
+	xed MockUserDefaultsDemo.xcworkspace
