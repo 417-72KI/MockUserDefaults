@@ -43,24 +43,6 @@ XCTAssertEqual(userDefaults.string(forKey: "key"), "string")
 ```
 
 ## Demo
-### Dependencies
-#### Tool
-- CocoaPods
-  - Bundler
-- Carthage
-  - Homebrew
-- XcodeGen
-  - Mint
-    - Homebrew
-- Fastlane
-  - Bundler
-#### Library
-- R.swift
-- RxSwift
-- RxDataSources
-- Nimble
-- Quick
-
 ### Create project
 #### First time
 
