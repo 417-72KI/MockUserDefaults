@@ -102,19 +102,11 @@ fastlane/test_output
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
 ### Xcode Patch ###
-*.xcodeproj
-*.xcworkspace
-# !*.xcodeproj/project.pbxproj
-# !*.xcodeproj/xcshareddata/
-# !*.xcworkspace/contents.xcworkspacedata
-# /*.gcno
-
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode,swift,cocoapods
-
-*.generated.swift
-*.plist
-!**/Settings.bundle/Root.plist
-!**/com.mono0926.LicensePlist.plist
-!**/com.mono0926.LicensePlist/*.plist
- No newline at end of file

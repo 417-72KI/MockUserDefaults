@@ -6,10 +6,16 @@
 //  Copyright © 2019 417.72KI. All rights reserved.
 //
 
+#if canImport(UIKit)
 import Combine
 import UIKit
 
-class MainViewController: UIViewController {
+public var mainView: some UIViewController {
+    UIStoryboard(name: "Main", bundle: Bundle.module)
+        .instantiateInitialViewController()!
+}
+
+final class MainViewController: UIViewController {
     private let viewModel = MainViewModel()
     private var cancellables: Set<AnyCancellable> = []
     private var notificationObserver: NSObjectProtocol?
@@ -74,3 +80,4 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 }
+#endif

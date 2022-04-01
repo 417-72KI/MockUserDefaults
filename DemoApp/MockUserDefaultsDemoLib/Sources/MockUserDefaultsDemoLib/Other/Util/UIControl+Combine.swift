@@ -6,6 +6,7 @@
 //  Copyright © 2022 417.72KI. All rights reserved.
 //
 
+#if canImport(UIKit)
 import Combine
 import UIKit
 
@@ -64,3 +65,4 @@ private extension UIControl {
         }
     }
 }
+#endif
