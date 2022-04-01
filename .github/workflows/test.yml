@@ -70,11 +70,14 @@ jobs:
       - id: xcresult-list
         name: Fetch xcresult files
         run: |
-          result_files=$(find test_output -name '*.xcresult')
-          echo "::set-output name=result_files::$result_files"
+          XCRESULT_FILES=$(find test_output -name '*.xcresult')
+          echo "XCRESULT_FILES<<EOF" >> $GITHUB_ENV
+          echo "$XCRESULT_FILES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
       - uses: kishikawakatsumi/xcresulttool@v1
         with:
-          path: ${{ steps.xcresult-list.outputs.result_files }}
+          path: |
+            ${{ env.XCRESULT_FILES }}
         if: success() || failure()
   swift_pm:
     name: via SwiftPM
