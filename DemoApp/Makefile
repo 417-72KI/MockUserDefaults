@@ -13,4 +13,4 @@ endif
 
 xcode:
 	mint run xcodegen xcodegen generate --spec App/project.yml
-	open MockUserDefaultsDemo.xcworkspace
+	xed MockUserDefaultsDemo.xcworkspace
