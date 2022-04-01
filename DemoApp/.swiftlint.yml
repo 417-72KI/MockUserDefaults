@@ -1,5 +1,6 @@
 included:
-  - MockUserDefaultsDemo
+  - App
+  - MockUserDefaultsDemoLib
 excluded:
   - Libs
   - Pods
@@ -88,18 +89,18 @@ line_length:
   warning: 150
   ignores_function_declarations: true
   ignores_comments: true
-
+file_length:
+  ignore_comment_only_lines: true
+cyclomatic_complexity:
+  ignores_case_statements: true
 nesting:
   type_level:
     warning: 2
-
 identifier_name:
   min_length: 2
-
 large_tuple:
   warning: 4
   error: 5
-
 file_header:
   required_pattern: |
                     \/\/
