@@ -41,11 +41,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run Test
+        id: test
         run: |
+          platform=$(echo '${{ matrix.destination }}' | sed -E 's/platform=(.*)(,name=.*)/\1/g' | tr ' ' '_')
+          echo "::set-output name=platform::$platform"
+          defaults write com.apple.dt.XCBuild EnableSwiftBuildSystemIntegration 1
           xcrun xcodebuild \
             -scheme MockUserDefaults \
             -destination '${{ matrix.destination }}' \
+            -enableCodeCoverage=YES \
+            -resultBundlePath "test_output/${{ matrix.xcode_version }}/$platform.xcresult" \
             test | xcpretty
+      - name: Upload test result
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
+          path: test_output
+          if-no-files-found: error
+          retention-days: 7
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
