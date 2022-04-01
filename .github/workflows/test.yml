@@ -52,13 +52,11 @@ jobs:
             -enableCodeCoverage=YES \
             -resultBundlePath "test_output/${{ matrix.xcode_version }}/$platform.xcresult" \
             test | xcpretty
-      - name: Upload test result
-        uses: actions/upload-artifact@v3
+      - name: Export test result
+        uses: kishikawakatsumi/xcresulttool@v1
         with:
-          name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
-          path: test_output
-          if-no-files-found: error
-          retention-days: 7
+          path: test_output/${{ matrix.xcode_version }}/${{ steps.test.outputs.platform }}.xcresult
+        if: success() || failure()
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
