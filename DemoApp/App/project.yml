@@ -14,8 +14,6 @@ options:
   xcodeVersion: 13.2
   bundleIdPrefix: io.github.417-72KI
 packages:
-  MockUserDefaults:
-    path: '../../'
   MockUserDefaultsDemoLib:
     path: '../MockUserDefaultsDemoLib'
 targets:
@@ -26,7 +24,7 @@ targets:
     sources: 
       - MockUserDefaultsDemo
     info:
-      path: MockUserDefaultsDemo/Resources/Info.plist
+      path: MockUserDefaultsDemo/Info.plist
       properties:
         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
         CFBundleExecutable: $(EXECUTABLE_NAME)
@@ -38,7 +36,7 @@ targets:
         # CFBundleVersion: 1
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
-        UIMainStoryboardFile: Main
+        # UIMainStoryboardFile: Main
         UIRequiredDeviceCapabilities: 
           - armv7
         UISupportedInterfaceOrientations: 
@@ -52,10 +50,12 @@ targets:
         TARGETED_DEVICE_FAMILY: 1
         DEVELOPMENT_TEAM: ""
         LIBRARY_SEARCH_PATHS: $(inherited)
+        VALID_ARCHS: arm64 arm64e
       configs:
         debug: 
           CODE_SIGN_IDENTITY: iPhone Developer
           PROVISIONING_PROFILE_SPECIFIER: ""
+          VALID_ARCHS[sdk=iphonesimulator*]: x86_64 arm64
         release: 
           CODE_SIGN_IDENTITY: iPhone Distribution
           PROVISIONING_PROFILE_SPECIFIER: ""
@@ -70,29 +70,3 @@ targets:
                 fi
     dependencies:
       - package: MockUserDefaultsDemoLib
-  MockUserDefaultsDemoTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources: 
-      - path: MockUserDefaultsDemoTests
-        excludes: [Info.plist] # Workaround: https://github.com/yonaskolb/XcodeGen/issues/1058#issuecomment-820501341
-    info:
-      path: MockUserDefaultsDemoTests/Info.plist
-      properties:
-        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
-        CFBundleExecutable: $(EXECUTABLE_NAME)
-        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
-        CFBundleInfoDictionaryVersion: 6.0
-        CFBundleName: $(PRODUCT_NAME)
-        CFBundlePackageType: BNDL
-        # CFBundleShortVersionString: 1.0.0
-        # CFBundleVersion: 1
-    settings:
-      INFOPLIST_FILE: MockUserDefaultsDemoTests/info.plist
-      TEST_HOST: $(BUILT_PRODUCTS_DIR)/MockUserDefaultsDemo.app/MockUserDefaultsDemo
-      CODE_SIGN_STYLE: Automatic
-      CODE_SIGN_IDENTITY: iPhone Developer
-      DEVELOPMENT_TEAM: ""
-    dependencies:
-      - target: MockUserDefaultsDemo
-      - package: MockUserDefaults
