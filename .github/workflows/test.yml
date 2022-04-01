@@ -78,6 +78,7 @@ jobs:
         with:
           path: |
             ${{ env.XCRESULT_FILES }}
+          show-passed-tests: false
         if: success() || failure()
   swift_pm:
     name: via SwiftPM
