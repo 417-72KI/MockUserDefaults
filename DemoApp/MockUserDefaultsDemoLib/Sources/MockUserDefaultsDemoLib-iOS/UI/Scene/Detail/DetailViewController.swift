@@ -8,7 +8,6 @@
 
 import Combine
 import UIKit
-import MockUserDefaultsDemoLib
 
 final class DetailViewController: UIViewController {
 

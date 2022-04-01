@@ -8,9 +8,10 @@
 
 import Combine
 import Foundation
+import MockUserDefaultsDemoLib
 
 @MainActor
-public final class MainViewModel: UsesUseCase {
+final class MainViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
     private let _model = CurrentValueSubject<[Model], Never>([])
@@ -19,12 +20,12 @@ public final class MainViewModel: UsesUseCase {
     }
 }
 
-public extension MainViewModel {
+extension MainViewModel {
     var models: [Model] { _model.value }
     var modelPublisher: AnyPublisher<[Model], Never> { _model.eraseToAnyPublisher() }
 }
 
-public extension MainViewModel {
+extension MainViewModel {
     func fetch() {
         Task {
             let models = await useCase.fetchAll()

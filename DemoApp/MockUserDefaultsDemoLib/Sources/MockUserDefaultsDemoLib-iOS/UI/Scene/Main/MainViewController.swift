@@ -8,7 +8,6 @@
 
 import Combine
 import UIKit
-import MockUserDefaultsDemoLib
 
 public var mainView: some UIViewController {
     UIStoryboard(name: "Main", bundle: Bundle.module)

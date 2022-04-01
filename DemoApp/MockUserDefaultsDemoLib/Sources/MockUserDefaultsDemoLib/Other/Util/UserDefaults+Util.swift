@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UsesUserDefaults {
+public protocol UsesUserDefaults {
     var userDefaults: UserDefaults { get }
 }
 

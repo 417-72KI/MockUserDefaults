@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol UsesUseCase {
+public protocol UsesUseCase {
     var useCase: UseCase { get }
 }
 
-protocol UseCase: UsesUserDefaults {
+public protocol UseCase: UsesUserDefaults {
     func fetchAll() async -> [Model]
     func save(_ model: Model)
 }
 
-extension UseCase {
+public extension UseCase {
     func fetchAll() async -> [Model] {
         userDefaults.dictionaryRepresentation()
             .filter { !$0.key.starts(with: "NS") && !$0.key.starts(with: "Apple") } // Exclude System keys

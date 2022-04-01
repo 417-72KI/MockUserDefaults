@@ -8,6 +8,10 @@
 
 import Foundation
 
-final class MixInUseCase: UseCase {
-    let userDefaults: UserDefaults = .standard
+public final class MixInUseCase: UseCase {
+    public let userDefaults: UserDefaults
+
+    public init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
 }
