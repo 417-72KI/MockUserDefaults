@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MockUserDefaultsDemoLib",
+    defaultLocalization: "ja",
     platforms: [.macOS(.v11), .iOS(.v15)],
     products: [
         .library(
