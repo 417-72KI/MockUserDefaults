@@ -87,7 +87,4 @@ if [ $DEBUG -eq 0 ]; then
 
     # GitHub Release
     gh release create "${TAG}"
-
-    # CocoaPods
-    bundle exec pod trunk push ${PROJECT_NAME}.podspec --allow-warnings
 fi
