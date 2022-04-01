@@ -15,6 +15,8 @@
 		4B0F146227F706F200B5027D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0F144F27F706F200B5027D /* Assets.xcassets */; };
 		4B0F148D27F707C200B5027D /* MainWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F148C27F707C200B5027D /* MainWrapperView.swift */; };
 		4B0F149527F7151300B5027D /* MockUserDefaultsDemoLib-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */; };
+		4B0F149727F7169F00B5027D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F149627F7165800B5027D /* AppDelegate.swift */; };
+		4B0F149927F716BA00B5027D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F149827F716BA00B5027D /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		4B0F145A27F706F200B5027D /* MockUserDefaultsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockUserDefaultsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0F145C27F706F200B5027D /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		4B0F148C27F707C200B5027D /* MainWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWrapperView.swift; sourceTree = "<group>"; };
+		4B0F149627F7165800B5027D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B0F149827F716BA00B5027D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0F145C27F706F200B5027D /* macOS.entitlements */,
+				4B0F149627F7165800B5027D /* AppDelegate.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0F148C27F707C200B5027D /* MainWrapperView.swift */,
+				4B0F149827F716BA00B5027D /* AppDelegate.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0F149927F716BA00B5027D /* AppDelegate.swift in Sources */,
 				4B0F145F27F706F200B5027D /* ContentView.swift in Sources */,
 				4B0F148D27F707C200B5027D /* MainWrapperView.swift in Sources */,
 				4B0F145D27F706F200B5027D /* MockUserDefaultsDemoApp.swift in Sources */,
@@ -211,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0F149727F7169F00B5027D /* AppDelegate.swift in Sources */,
 				4B0F146027F706F200B5027D /* ContentView.swift in Sources */,
 				4B0F145E27F706F200B5027D /* MockUserDefaultsDemoApp.swift in Sources */,
 			);
