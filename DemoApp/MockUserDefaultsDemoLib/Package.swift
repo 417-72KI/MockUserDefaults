@@ -25,7 +25,8 @@ let package = Package(
         .target(
             name: "MockUserDefaultsDemoLib-iOS",
             dependencies: [
-                .target(name: "MockUserDefaultsDemoLib", condition: .when(platforms: [.iOS]))
+                .target(name: "MockUserDefaultsDemoLib",
+                        condition: .when(platforms: [.iOS]))
             ]),
         .testTarget(
             name: "MockUserDefaultsDemoLibTests",
