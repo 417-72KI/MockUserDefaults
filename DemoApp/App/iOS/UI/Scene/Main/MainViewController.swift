@@ -9,11 +9,6 @@
 import Combine
 import UIKit
 
-public var mainView: some UIViewController {
-    UIStoryboard(name: "Main", bundle: Bundle.module)
-        .instantiateInitialViewController()!
-}
-
 final class MainViewController: UIViewController {
     private let viewModel: MainViewModel
     private var cancellables: Set<AnyCancellable> = []

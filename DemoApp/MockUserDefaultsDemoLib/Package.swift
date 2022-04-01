@@ -11,9 +11,6 @@ let package = Package(
         .library(
             name: "MockUserDefaultsDemoLib",
             targets: ["MockUserDefaultsDemoLib"]),
-        .library(
-            name: "MockUserDefaultsDemoLib-iOS",
-            targets: ["MockUserDefaultsDemoLib-iOS"])
     ],
     dependencies: [
         .package(name: "MockUserDefaults", path: "../../")
@@ -22,12 +19,6 @@ let package = Package(
         .target(
             name: "MockUserDefaultsDemoLib",
             dependencies: []),
-        .target(
-            name: "MockUserDefaultsDemoLib-iOS",
-            dependencies: [
-                .target(name: "MockUserDefaultsDemoLib",
-                        condition: .when(platforms: [.iOS]))
-            ]),
         .testTarget(
             name: "MockUserDefaultsDemoLibTests",
             dependencies: [

@@ -14,9 +14,14 @@
 		4B0F146127F706F200B5027D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0F144F27F706F200B5027D /* Assets.xcassets */; };
 		4B0F146227F706F200B5027D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B0F144F27F706F200B5027D /* Assets.xcassets */; };
 		4B0F148D27F707C200B5027D /* MainWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F148C27F707C200B5027D /* MainWrapperView.swift */; };
-		4B0F149527F7151300B5027D /* MockUserDefaultsDemoLib-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */; };
 		4B0F149727F7169F00B5027D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F149627F7165800B5027D /* AppDelegate.swift */; };
 		4B0F149927F716BA00B5027D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F149827F716BA00B5027D /* AppDelegate.swift */; };
+		B9CD6B3D27F770E900E735BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD6B3827F770B800E735BD /* DetailViewController.swift */; };
+		B9CD6B3E27F770E900E735BD /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD6B3927F770B800E735BD /* DetailViewModel.swift */; };
+		B9CD6B3F27F770E900E735BD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD6B3B27F770B800E735BD /* MainViewController.swift */; };
+		B9CD6B4027F770E900E735BD /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CD6B3C27F770B800E735BD /* MainViewModel.swift */; };
+		B9CD6B4227F770FE00E735BD /* MockUserDefaultsDemoLib in Frameworks */ = {isa = PBXBuildFile; productRef = B9CD6B4127F770FE00E735BD /* MockUserDefaultsDemoLib */; };
+		B9CD6B4327F7716500E735BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CD6B3327F770B800E735BD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		4B0F148C27F707C200B5027D /* MainWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWrapperView.swift; sourceTree = "<group>"; };
 		4B0F149627F7165800B5027D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B0F149827F716BA00B5027D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B9CD6B3427F770B800E735BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B9CD6B3827F770B800E735BD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B9CD6B3927F770B800E735BD /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		B9CD6B3B27F770B800E735BD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B9CD6B3C27F770B800E735BD /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B0F149527F7151300B5027D /* MockUserDefaultsDemoLib-iOS in Frameworks */,
+				B9CD6B4227F770FE00E735BD /* MockUserDefaultsDemoLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +104,8 @@
 			children = (
 				4B0F148C27F707C200B5027D /* MainWrapperView.swift */,
 				4B0F149827F716BA00B5027D /* AppDelegate.swift */,
+				B9CD6B3227F770B800E735BD /* Resources */,
+				B9CD6B3527F770B800E735BD /* UI */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -103,6 +115,49 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9CD6B3227F770B800E735BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD6B3327F770B800E735BD /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B9CD6B3527F770B800E735BD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD6B3627F770B800E735BD /* Scene */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B9CD6B3627F770B800E735BD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD6B3727F770B800E735BD /* Detail */,
+				B9CD6B3A27F770B800E735BD /* Main */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		B9CD6B3727F770B800E735BD /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD6B3827F770B800E735BD /* DetailViewController.swift */,
+				B9CD6B3927F770B800E735BD /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B9CD6B3A27F770B800E735BD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B9CD6B3B27F770B800E735BD /* MainViewController.swift */,
+				B9CD6B3C27F770B800E735BD /* MainViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +177,7 @@
 			);
 			name = "MockUserDefaultsDemo (iOS)";
 			packageProductDependencies = (
-				4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */,
+				B9CD6B4127F770FE00E735BD /* MockUserDefaultsDemoLib */,
 			);
 			productName = "MockUserDefaultsDemo (iOS)";
 			productReference = 4B0F145427F706F200B5027D /* MockUserDefaultsDemo.app */;
@@ -153,7 +208,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = 417.72KI;
 				TargetAttributes = {
 					4B0F145327F706F200B5027D = {
@@ -189,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0F146127F706F200B5027D /* Assets.xcassets in Resources */,
+				B9CD6B4327F7716500E735BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,10 +263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CD6B3F27F770E900E735BD /* MainViewController.swift in Sources */,
 				4B0F149927F716BA00B5027D /* AppDelegate.swift in Sources */,
+				B9CD6B3E27F770E900E735BD /* DetailViewModel.swift in Sources */,
 				4B0F145F27F706F200B5027D /* ContentView.swift in Sources */,
+				B9CD6B3D27F770E900E735BD /* DetailViewController.swift in Sources */,
 				4B0F148D27F707C200B5027D /* MainWrapperView.swift in Sources */,
 				4B0F145D27F706F200B5027D /* MockUserDefaultsDemoApp.swift in Sources */,
+				B9CD6B4027F770E900E735BD /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +285,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B9CD6B3327F770B800E735BD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9CD6B3427F770B800E735BD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4B0F146327F706F200B5027D /* Debug */ = {
@@ -411,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -437,6 +509,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -490,9 +563,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4B0F149427F7151300B5027D /* MockUserDefaultsDemoLib-iOS */ = {
+		B9CD6B4127F770FE00E735BD /* MockUserDefaultsDemoLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "MockUserDefaultsDemoLib-iOS";
+			productName = MockUserDefaultsDemoLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

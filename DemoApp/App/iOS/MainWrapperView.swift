@@ -7,13 +7,13 @@
 //
 
 import SwiftUI
-import MockUserDefaultsDemoLib_iOS
 
 struct MainWrapperView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
 
     func makeUIViewController(context: Context) -> UIViewController {
-       mainView
+        UIStoryboard(name: "Main", bundle: nil)
+            .instantiateInitialViewController()!
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {

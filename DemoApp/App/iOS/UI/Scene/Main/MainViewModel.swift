@@ -15,9 +15,6 @@ final class MainViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
     private let _model = CurrentValueSubject<[Model], Never>([])
-
-    public init() {
-    }
 }
 
 extension MainViewModel {

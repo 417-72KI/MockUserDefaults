@@ -10,6 +10,7 @@ import Combine
 import Foundation
 import MockUserDefaultsDemoLib
 
+@MainActor
 final class DetailViewModel: UsesUseCase {
     let useCase: UseCase = MixInUseCase()
 
