@@ -1,0 +1,54 @@
+name: Demo app
+on:
+  pull_request:
+    paths:
+      - .github/workflows/demo.yml
+      - DemoApp/*
+concurrency:
+    group: ${{ github.head_ref }}-${{ github.workflow }}
+    cancel-in-progress: true
+jobs:
+  xcode-version:
+    name: Extract latest Xcode version from matrix
+    runs-on: ubuntu-latest
+    outputs:
+      latest-xcode-version: ${{ steps.extract-xcode-version.outputs.latest_xcode_version }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: extract-xcode-version
+        run: |
+          latest_xcode_version=$(cat versions.json | jq -r '.xcode_version | max')
+          echo "::set-output name=latest_xcode_version::$latest_xcode_version"
+  test:
+    name: Test
+    needs: xcode-version
+    runs-on: macOS-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        destination:
+          - 'platform=macOS'
+          - 'platform=iOS Simulator,name=iPhone 13 Pro'
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ needs.xcode-version.outputs.latest-xcode-version }}.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Test
+        id: test
+        run: |
+          platform=$(echo '${{ matrix.destination }}' | sed -E 's/platform=(.*)(,name=.*)/\1/g' | tr ' ' '_')
+          echo "::set-output name=platform::$platform"
+          defaults write com.apple.dt.XCBuild EnableSwiftBuildSystemIntegration 1
+          cd DemoApp/MockUserDefaultsDemoLib
+          xcrun xcodebuild \
+            -scheme 'MockUserDefaultsDemoLib' \
+            -destination '${{ matrix.destination }}' \
+            -resultBundlePath "test_output/$platform.xcresult" \
+            test | xcpretty
+      - name: Upload test result
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.test.outputs.platform }}
+          path: DemoApp/MockUserDefaultsDemoLib/test_output
+          if-no-files-found: error
+          retention-days: 7
