@@ -27,6 +27,7 @@ ignore:
 	| awk '(/^$$/ || !a[$$0]++){print}' \
 	| uniq \
 	> .gitignore
+	echo 'test_output' >> .gitignore
 
 init_demo_app:
 	$(MAKE) -C DemoApp init
