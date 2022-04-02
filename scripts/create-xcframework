@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+set -eo pipefail
+
+PROJECT_NAME=MockUserDefaults
+BUILD_DIR='.build/Products'
+CONFIGURATION=Release
+
+/bin/rm -rf ${BUILD_DIR}/*
+
+SDKS=(
+    macosx
+    iphoneos
+    iphonesimulator
+    watchos
+    watchsimulator
+    appletvsimulator
+    appletvos
+)
+for sdk in $SDKS[@]; do
+    xcrun xcodebuild \
+    -scheme "${PROJECT_NAME}-Package" \
+    -configuration ${CONFIGURATION} \
+    -sdk $sdk \
+    ONLY_ACTIVE_ARCH=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
+    clean archive \
+    -archivePath "${BUILD_DIR}/${sdk}.xcarchive" \
+    2>/dev/null | xcpretty
+done
+
+eval $(
+    echo "xcodebuild -create-xcframework 
+    $(
+        for sdk in $SDKS[@]; do
+        echo "-framework ${BUILD_DIR}/${sdk}.xcarchive/Products/Library/Frameworks/${PROJECT_NAME}.framework"
+        # echo "-debug-symbols ${BUILD_DIR}/${sdk}.xcarchive/dSYMs/${PROJECT_NAME}.framework.dSYM"
+        done
+    )
+    -output ${BUILD_DIR}/${PROJECT_NAME}.xcframework"
+)
