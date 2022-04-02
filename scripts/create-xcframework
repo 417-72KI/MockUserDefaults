@@ -6,7 +6,11 @@ PROJECT_NAME=MockUserDefaults
 BUILD_DIR='.build/Products'
 CONFIGURATION=Release
 
-/bin/rm -rf ${BUILD_DIR}/*
+if [[ -e ${BUILD_DIR} ]]; then
+    /bin/rm -rf ${BUILD_DIR}
+fi
+
+swift package generate-xcodeproj
 
 SDKS=(
     macosx
@@ -40,3 +44,5 @@ eval $(
     )
     -output ${BUILD_DIR}/${PROJECT_NAME}.xcframework"
 )
+
+/bin/rm -rf ${PROJECT_NAME}.xcodeproj
