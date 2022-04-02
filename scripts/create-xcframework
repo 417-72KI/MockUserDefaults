@@ -4,14 +4,6 @@ set -eo pipefail
 
 PROJECT_NAME=MockUserDefaults
 BUILD_DIR='.build/Products'
-CONFIGURATION=Release
-
-if [[ -e ${BUILD_DIR} ]]; then
-    /bin/rm -rf ${BUILD_DIR}
-fi
-
-swift package generate-xcodeproj
-
 SDKS=(
     macosx
     iphoneos
@@ -21,6 +13,14 @@ SDKS=(
     appletvsimulator
     appletvos
 )
+CONFIGURATION=Release
+
+if [[ -e ${BUILD_DIR} ]]; then
+    /bin/rm -rf ${BUILD_DIR}
+fi
+
+swift package generate-xcodeproj
+
 for sdk in $SDKS[@]; do
     xcrun xcodebuild \
     -scheme "${PROJECT_NAME}-Package" \
