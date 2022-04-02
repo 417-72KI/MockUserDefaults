@@ -1,6 +1,6 @@
 PROJECT_NAME = MockUserDefaults
 
-ver = 1.3.1
+ver = 2.0.0
 
 .SILENT:
 
