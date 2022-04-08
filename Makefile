@@ -29,11 +29,12 @@ ignore:
 	> .gitignore
 	echo 'test_output' >> .gitignore
 
-init_demo_app:
-	$(MAKE) -C DemoApp init
-
 demo_app:
-	$(MAKE) -C DemoApp xcode
+	xed DemoApp/${PROJECT_NAME}.xcworkspace
 
-test_demo: bundle
-	bundle exec fastlane test_demo
+test_demo:
+	cd DemoApp/${PROJECT_NAME}DemoLib && \
+	xcrun xcodebuild \
+	-scheme '${PROJECT_NAME}DemoLib' \
+	-destination 'platform=macOS' \
+	test | xcpretty
