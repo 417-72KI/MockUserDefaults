@@ -16,12 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      latest-xcode-version: ${{ steps.set-matrix.outputs.latest-xcode-version }}
     steps:
       - uses: actions/checkout@v3
       - id: set-matrix
         run: |
-          matrix=$(cat versions.json | jq -c .)
-          echo "::set-output name=matrix::$matrix"
+          echo "::set-output name=matrix::$(cat versions.json | jq -c .)"
+          echo "::set-output name=latest-xcode-version::$(cat versions.json | jq -rc '.xcode_version | max')"
   xcodebuild:
     name: via xcodebuild
     needs: generate-matrix
@@ -29,7 +30,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        xcode_version: ${{ fromJson(needs.generate-matrix.outputs.matrix).xcode_version }}
         destination:
           - 'platform=macOS'
           - 'platform=macOS,variant=Mac Catalyst'
@@ -37,7 +37,7 @@ jobs:
           - 'platform=tvOS Simulator,name=Apple TV'
           - 'platform=watchOS Simulator,name=Apple Watch Series 4 - 40mm'
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ needs.generate-matrix.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Run Test
