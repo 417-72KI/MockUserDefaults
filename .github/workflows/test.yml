@@ -55,7 +55,7 @@ jobs:
       - name: Upload test result
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
+          name: ${{ steps.test.outputs.platform }}
           path: test_output
           if-no-files-found: error
           retention-days: 7
@@ -71,10 +71,11 @@ jobs:
         run:
           xcrun xcresulttool merge test_output/**/*.xcresult --output-path test_output/TestResults.xcresult
       - uses: kishikawakatsumi/xcresulttool@v1
+        if: success() || failure()
         with:
           path: test_output/TestResults.xcresult
           show-passed-tests: false
-        if: success() || failure()
+          upload-bundles: false
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
