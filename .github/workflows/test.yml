@@ -69,7 +69,7 @@ jobs:
           path: test_output
       - name: Merge xcresult files
         run:
-          xcrun xcresulttool merge test_output/*.xcresult --output-path test_output/TestResults.xcresult
+          xcrun xcresulttool merge test_output/**/*.xcresult --output-path test_output/TestResults.xcresult
       - uses: kishikawakatsumi/xcresulttool@v1
         with:
           path: test_output/TestResults.xcresult
