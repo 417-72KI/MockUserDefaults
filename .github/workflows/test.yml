@@ -47,9 +47,9 @@ jobs:
           echo "::set-output name=platform::$platform"
           defaults write com.apple.dt.XCBuild EnableSwiftBuildSystemIntegration 1
           xcrun xcodebuild \
+            -enableCodeCoverage=YES \
             -scheme MockUserDefaults \
             -destination '${{ matrix.destination }}' \
-            -enableCodeCoverage=YES \
             -resultBundlePath "test_output/${{ matrix.xcode_version }}/$platform.xcresult" \
             test | xcpretty
       - name: Upload test result
@@ -75,6 +75,7 @@ jobs:
         with:
           path: test_output/TestResults.xcresult
           show-passed-tests: false
+          show-code-coverage: false
           upload-bundles: false
   swift_pm:
     name: via SwiftPM
