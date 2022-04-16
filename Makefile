@@ -7,7 +7,7 @@ ver = 2.0.0
 test:
 	rm -rf test_output
 	xcrun -sdk macosx xcodebuild \
-		-scheme MockUserDefaults \
+		-scheme ${PROJECT_NAME} \
 		-destination 'platform=macOS' \
 		-enableCodeCoverage=YES \
 		-resultBundlePath "test_output/test_result.xcresult" \
