@@ -4,14 +4,15 @@ ver = 2.0.0
 
 .SILENT:
 
-bundle:
-	bundle install --quiet 2>/dev/null
-
-test: bundle
-	bundle exec fastlane test
-
-lint: bundle
-	bundle exec pod spec lint --no-clean --allow-warnings
+test:
+	rm -rf test_output
+	xcrun -sdk macosx xcodebuild \
+		-scheme MockUserDefaults \
+		-destination 'platform=macOS' \
+		-enableCodeCoverage=YES \
+		-resultBundlePath "test_output/test_result.xcresult" \
+		test | xcpretty
+	xed test_output/test_result.xcresult
 
 release:
 	@scripts/release.sh ${PROJECT_NAME} ${ver}
