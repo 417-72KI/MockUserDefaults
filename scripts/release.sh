@@ -7,6 +7,16 @@ TAG=$2
 
 DEBUG=0
 
+if ! type "gsed" > /dev/null; then
+    echo '\e[33m`gsed` not found. Install\e[m'
+    brew install gnu-sed
+fi
+
+if ! type "gh" > /dev/null; then
+    echo '\e[33m`gh` not found. Install\e[m'
+    brew install gh
+fi
+
 if [ `git symbolic-ref --short HEAD` != 'main' ]; then
     echo '\e[33mRelease job is enabled only in main. Run in debug mode\e[m'
     DEBUG=1
@@ -39,16 +49,6 @@ fi
 README_VERSION=$(cat README.md | grep '.package(url: ' | awk '{ print $NF }' | sed -E 's/\"(.*)\"\)?\)?,?/\1/')
 if [ "${TAG}" != "${README_VERSION}" ]; then
     sed -i '' -E "s/(\.package\(url: \".*${PROJECT_NAME}\.git\", from: \").*(\"\),)/\1${TAG}\2/g" README.md
-fi
-
-if ! type "gsed" > /dev/null; then
-    echo '\e[33m`gsed` not found. Install\e[m'
-    brew install gnu-sed
-fi
-
-if ! type "gh" > /dev/null; then
-    echo '\e[33m`gh` not found. Install\e[m'
-    brew install gh
 fi
 
 # Podspec
