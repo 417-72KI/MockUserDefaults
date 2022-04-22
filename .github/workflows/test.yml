@@ -58,7 +58,7 @@ jobs:
           name: ${{ steps.test.outputs.platform }}
           path: test_output
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 1
   xcodebuild_result:
     name: Export xcodebuild test result
     needs: xcodebuild
@@ -76,7 +76,7 @@ jobs:
           path: test_output/TestResults.xcresult
           show-passed-tests: false
           show-code-coverage: false
-          upload-bundles: false
+          upload-bundles: true
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
