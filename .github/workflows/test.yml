@@ -16,12 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      latest-xcode-version: ${{ steps.set-matrix.outputs.latest-xcode-version }}
     steps:
       - uses: actions/checkout@v3
       - id: set-matrix
         run: |
-          matrix=$(cat versions.json | jq -c .)
-          echo "::set-output name=matrix::$matrix"
+          echo "::set-output name=matrix::$(cat versions.json | jq -c .)"
+          echo "::set-output name=latest-xcode-version::$(cat versions.json | jq -rc '.xcode_version | max')"
   xcodebuild:
     name: via xcodebuild
     needs: generate-matrix
@@ -29,7 +30,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        xcode_version: ${{ fromJson(needs.generate-matrix.outputs.matrix).xcode_version }}
         destination:
           - 'platform=macOS'
           - 'platform=macOS,variant=Mac Catalyst'
@@ -37,7 +37,7 @@ jobs:
           - 'platform=tvOS Simulator,name=Apple TV'
           - 'platform=watchOS Simulator,name=Apple Watch Series 4 - 40mm'
     env:
-      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_${{ needs.generate-matrix.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
       - uses: actions/checkout@v3
       - name: Run Test
@@ -47,18 +47,18 @@ jobs:
           echo "::set-output name=platform::$platform"
           defaults write com.apple.dt.XCBuild EnableSwiftBuildSystemIntegration 1
           xcrun xcodebuild \
+            -enableCodeCoverage=YES \
             -scheme MockUserDefaults \
             -destination '${{ matrix.destination }}' \
-            -enableCodeCoverage=YES \
             -resultBundlePath "test_output/${{ matrix.xcode_version }}/$platform.xcresult" \
             test | xcpretty
       - name: Upload test result
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
+          name: ${{ steps.test.outputs.platform }}
           path: test_output
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 1
   xcodebuild_result:
     name: Export xcodebuild test result
     needs: xcodebuild
@@ -67,19 +67,16 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           path: test_output
-      - id: xcresult-list
-        name: Fetch xcresult files
-        run: |
-          XCRESULT_FILES=$(find test_output -name '*.xcresult')
-          echo "XCRESULT_FILES<<EOF" >> $GITHUB_ENV
-          echo "$XCRESULT_FILES" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+      - name: Merge xcresult files
+        run:
+          xcrun xcresulttool merge test_output/**/*.xcresult --output-path test_output/TestResults.xcresult
       - uses: kishikawakatsumi/xcresulttool@v1
-        with:
-          path: |
-            ${{ env.XCRESULT_FILES }}
-          show-passed-tests: false
         if: success() || failure()
+        with:
+          path: test_output/TestResults.xcresult
+          show-passed-tests: false
+          show-code-coverage: false
+          upload-bundles: true
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
