@@ -31,7 +31,7 @@ ignore:
 	echo 'test_output' >> .gitignore
 
 demo_app:
-	xed DemoApp/${PROJECT_NAME}.xcworkspace
+	xed DemoApp/${PROJECT_NAME}Demo.xcworkspace
 
 test_demo:
 	cd DemoApp/${PROJECT_NAME}DemoLib && \
