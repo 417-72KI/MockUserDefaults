@@ -6,7 +6,7 @@ on:
       - '**.h'
       - '**.m'
       - '.github/workflows/test.yml'
-      - 'versions.json'
+      - '.github/matrix.json'
 concurrency: 
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v3
       - id: set-matrix
         run: |
-          echo "::set-output name=matrix::$(cat versions.json | jq -c .)"
-          echo "::set-output name=latest-xcode-version::$(cat versions.json | jq -rc '.xcode_version | max')"
+          echo "matrix=$(cat .github/matrix.json | jq -c .)" >> $GITHUB_OUTPUT
+          echo "latest-xcode-version=$(cat .github/matrix.json | jq -rc '.xcode_version | max')" >> $GITHUB_OUTPUT
   xcodebuild:
     name: via xcodebuild
     needs: generate-matrix
@@ -35,7 +35,7 @@ jobs:
           - 'platform=macOS,variant=Mac Catalyst'
           - 'platform=iOS Simulator,name=iPhone 11 Pro'
           - 'platform=tvOS Simulator,name=Apple TV'
-          - 'platform=watchOS Simulator,name=Apple Watch Series 4 - 40mm'
+          - 'platform=watchOS Simulator,name=Apple Watch Series 5 (40mm)'
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ needs.generate-matrix.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
@@ -44,7 +44,7 @@ jobs:
         id: test
         run: |
           platform=$(echo '${{ matrix.destination }}' | sed -E 's/platform=(.*)(,name=.*)/\1/g' | tr ' ' '_')
-          echo "::set-output name=platform::$platform"
+          echo "platform=$platform" >> $GITHUB_OUTPUT
           defaults write com.apple.dt.XCBuild EnableSwiftBuildSystemIntegration 1
           xcrun xcodebuild \
             -enableCodeCoverage=YES \
