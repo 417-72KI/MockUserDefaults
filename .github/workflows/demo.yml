@@ -22,7 +22,7 @@ jobs:
   test:
     name: Test
     needs: xcode-version
-    runs-on: macOS-latest
+    runs-on: macOS-13
     strategy:
       fail-fast: false
       matrix: 
