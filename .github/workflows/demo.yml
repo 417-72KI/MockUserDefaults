@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - id: extract-xcode-version
         run: |
-          latest_xcode_version=$(cat versions.json | jq -r '.xcode_version | max')
+          latest_xcode_version=$(cat .github/matrix.json | jq -r '.xcode_version | max')
           echo "::set-output name=latest_xcode_version::$latest_xcode_version"
   test:
     name: Test
