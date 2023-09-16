@@ -1,6 +1,7 @@
 {
   "extends": [
-    "config:base"
+    "config:recommended",
+    "github>hatena/renovate-config"
   ],
   "timezone": "Asia/Tokyo",
   "vulnerabilityAlerts": {
@@ -15,5 +16,15 @@
       "bundler",
       "github-actions",
       "swift"
-  ]
+  ],
+  "automergeSchedule": ["at any time"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "github-actions": {
+    "major": {
+      "automerge": true
+    }
+  }
 }
