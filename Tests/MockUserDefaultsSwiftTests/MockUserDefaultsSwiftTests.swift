@@ -35,7 +35,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testObject() {
-        // XCTAssertNil(userDefaults.object(forKey: testKey))
+        XCTAssertNil(userDefaults.object(forKey: testKey))
 
         userDefaults.set("string", forKey: testKey)
         XCTAssertEqual(userDefaults.object(forKey: testKey) as? String, "string")
@@ -45,7 +45,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testString() {
-        // XCTAssertNil(userDefaults.string(forKey: testKey))
+        XCTAssertNil(userDefaults.string(forKey: testKey))
 
         userDefaults.set("string", forKey: testKey)
         XCTAssertEqual(userDefaults.string(forKey: testKey), "string")
@@ -86,7 +86,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testArray() {
-        // XCTAssertNil(userDefaults.array(forKey: testKey))
+        XCTAssertNil(userDefaults.array(forKey: testKey))
 
         userDefaults.set([] as [Any], forKey: testKey)
         XCTAssertEqual(userDefaults.array(forKey: testKey)?.isEmpty, true)
@@ -101,7 +101,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testDictionary() {
-        // XCTAssertNil(userDefaults.dictionary(forKey: testKey))
+        XCTAssertNil(userDefaults.dictionary(forKey: testKey))
 
         userDefaults.set([:] as [AnyHashable: Any], forKey:testKey)
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?.isEmpty, true)
@@ -116,7 +116,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testStringArray() {
-        // XCTAssertNil(userDefaults.stringArray(forKey: testKey))
+        XCTAssertNil(userDefaults.stringArray(forKey: testKey))
 
         userDefaults.set([] as [Any], forKey: testKey)
         XCTAssertEqual(userDefaults.stringArray(forKey: testKey), [])
@@ -137,7 +137,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
             return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
         }
 
-        // XCTAssertNil(userDefaults.data(forKey: testKey))
+        XCTAssertNil(userDefaults.data(forKey: testKey))
 
         let data = createData()
         XCTAssertNotNil(data)
@@ -149,7 +149,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     }
 
     func testUrl() {
-        // XCTAssertNil(userDefaults.url(forKey: testKey))
+        XCTAssertNil(userDefaults.url(forKey: testKey))
 
         let url = URL(string: "https://github.com/")
         XCTAssertNotNil(url)
