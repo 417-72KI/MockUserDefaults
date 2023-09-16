@@ -28,7 +28,7 @@ jobs:
       matrix: 
         destination:
           - 'platform=macOS'
-          - 'platform=iOS Simulator,name=iPhone 13 Pro'
+          - 'platform=iOS Simulator,name=iPhone 14 Pro'
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ needs.xcode-version.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
