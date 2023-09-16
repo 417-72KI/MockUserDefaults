@@ -88,10 +88,10 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     func testArray() {
         // XCTAssertNil(userDefaults.array(forKey: testKey))
 
-        userDefaults.set([], forKey: testKey)
+        userDefaults.set([] as [Any], forKey: testKey)
         XCTAssertEqual(userDefaults.array(forKey: testKey)?.isEmpty, true)
 
-        userDefaults.set(["string", 10], forKey:testKey)
+        userDefaults.set(["string", 10] as [Any], forKey:testKey)
         XCTAssertEqual(userDefaults.array(forKey: testKey)?.count, 2)
         XCTAssertEqual(userDefaults.array(forKey: testKey)?[0] as? String, "string")
         XCTAssertEqual(userDefaults.array(forKey: testKey)?[1] as? Int, 10)
@@ -103,10 +103,10 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     func testDictionary() {
         // XCTAssertNil(userDefaults.dictionary(forKey: testKey))
 
-        userDefaults.set([:], forKey:testKey)
+        userDefaults.set([:] as [AnyHashable: Any], forKey:testKey)
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?.isEmpty, true)
 
-        userDefaults.set(["string": "string", "int" : 10], forKey:testKey)
+        userDefaults.set(["string": "string", "int" : 10] as [AnyHashable: Any], forKey:testKey)
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?.count, 2)
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?["string"] as? String, "string")
         XCTAssertEqual(userDefaults.dictionary(forKey: testKey)?["int"] as? Int, 10)
@@ -118,13 +118,13 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     func testStringArray() {
         // XCTAssertNil(userDefaults.stringArray(forKey: testKey))
 
-        userDefaults.set([], forKey: testKey)
+        userDefaults.set([] as [Any], forKey: testKey)
         XCTAssertEqual(userDefaults.stringArray(forKey: testKey), [])
 
         userDefaults.set(["string"], forKey:testKey)
         XCTAssertEqual(userDefaults.stringArray(forKey: testKey), ["string"])
 
-        userDefaults.set(["string", 10], forKey:testKey)
+        userDefaults.set(["string", 10] as [Any], forKey:testKey)
         XCTAssertNil(userDefaults.stringArray(forKey: testKey))
 
         userDefaults.set("not an array", forKey: testKey)
