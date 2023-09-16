@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "MockUserDefaults"
-    s.version      = "2.1.0"
+    s.version      = "2.1.1"
     s.summary      = "Mocking UserDefaults for tests"
         
     s.description  = <<-DESC
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     
     s.ios.deployment_target = "11.0"
     s.osx.deployment_target = "10.14"
-    s.watchos.deployment_target = "2.0"
+    s.watchos.deployment_target = "4.0"
     s.tvos.deployment_target = "11.0"
     
     s.requires_arc = true
