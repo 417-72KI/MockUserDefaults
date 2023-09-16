@@ -8,15 +8,17 @@ jobs:
   verify:
     name: Verify
     runs-on: ubuntu-latest
+    container:
+      image: renovate/renovate:latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: '18.x'
       - id: validate
         # https://trstringer.com/github-actions-multiline-strings/
         run: |
-          yarn global add renovate
+          # yarn global add renovate
           renovate-config-validator > validation-result.txt
       - uses: actions/github-script@v6
         if: ${{ always() }}
