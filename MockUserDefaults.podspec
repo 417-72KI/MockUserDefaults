@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "MockUserDefaults"
-    s.version      = "2.2.0"
+    s.version      = "2.3.0"
     s.summary      = "Mocking UserDefaults for tests"
         
     s.description  = <<-DESC
