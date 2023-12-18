@@ -46,7 +46,7 @@ jobs:
             -resultBundlePath "test_output/$platform.xcresult" \
             test | xcpretty
       - name: Upload test result
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.test.outputs.platform }}
           path: DemoApp/MockUserDefaultsDemoLib/test_output
