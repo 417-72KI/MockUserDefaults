@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSUserDefaults (Mock)
 
 /** Mock object for `NSUserDefaults` */
-@property (class, readonly) NSUserDefaults *mockedUserDefaults;
+@property (class, readonly) NSUserDefaults *mockedUserDefaults NS_SWIFT_NAME(mock);
 
 /** Clear all data inside mock. */
 + (void)resetMockedUserDefaults NS_SWIFT_NAME(resetMock());
