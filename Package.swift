@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
@@ -15,11 +15,8 @@ let package = Package(
             targets: ["MockUserDefaults"]
         )
     ],
-    dependencies: [],
     targets: [
-        .target(
-            name: "MockUserDefaults",
-            dependencies: []),
+        .target(name: "MockUserDefaults"),
         .testTarget(
             name: "MockUserDefaultsTests",
             dependencies: ["MockUserDefaults"]
