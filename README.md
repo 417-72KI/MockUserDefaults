@@ -1,5 +1,5 @@
 # MockUserDefaults
-[![Build Status](https://travis-ci.com/417-72KI/MockUserDefaults.svg?branch=master)](https://travis-ci.com/417-72KI/MockUserDefaults)
+[![Test](https://github.com/417-72KI/MockUserDefaults/actions/workflows/test.yml/badge.svg)](https://github.com/417-72KI/MockUserDefaults/actions/workflows/test.yml)
 [![GitHub release](https://img.shields.io/github/release/417-72KI/MockUserDefaults/all.svg)](https://github.com/417-72KI/MockUserDefaults/releases)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2F417-72KI%2FMockUserDefaults%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/417-72KI/MockUserDefaults)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2F417-72KI%2FMockUserDefaults%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/417-72KI/MockUserDefaults)
