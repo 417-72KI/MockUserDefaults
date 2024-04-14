@@ -173,6 +173,13 @@ class MockUserDefaultsSwiftTests: XCTestCase {
         XCTAssertFalse(userDefaults.synchronize())
         // XCTAssertTrue(UserDefaults.standard.synchronize())
     }
+
+    @available(*, deprecated, message: "Drop when `mocked` is removed")
+    func testDeprecated() {
+        let replaced = UserDefaults.mock
+        let deprecated = UserDefaults.mocked
+        XCTAssertEqual(replaced, deprecated)
+    }
 }
 
 private func XCTAssertEqualWithoutXCTKeys(_ a: [String: Any], _ b: [String: Any], file: StaticString = #file, line: UInt = #line) {

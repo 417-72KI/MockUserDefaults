@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** Mock object for `NSUserDefaults` */
 @property (class, readonly) NSUserDefaults *mockedUserDefaults NS_SWIFT_NAME(mock);
 
+/** Backward compatibility for Swift. Will be removed on next major version. */
+@property (class, readonly) NSUserDefaults *deprecatedMockedUserDefaults NS_SWIFT_NAME(mocked) DEPRECATED_MSG_ATTRIBUTE("Renamed to `mock`");
+
 /** Clear all data inside mock. */
 + (void)resetMockedUserDefaults NS_SWIFT_NAME(resetMock());
 
