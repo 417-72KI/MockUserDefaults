@@ -185,6 +185,11 @@ NSMutableDictionary *mockDictionary;
     return userDefaluts;
 }
 
++ (NSUserDefaults *)deprecatedMockedUserDefaults
+{
+    return [self mockedUserDefaults];
+}
+
 + (void)resetMockedUserDefaults
 {
     [mockDictionary removeAllObjects];

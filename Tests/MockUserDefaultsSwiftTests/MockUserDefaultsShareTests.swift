@@ -197,9 +197,9 @@ private extension TestRepository {
 }
 
 private class Test1Repository: TestRepository {
-    let userDefaults: UserDefaults = .mocked
+    let userDefaults: UserDefaults = .mock
 }
 
 private class Test2Repository: TestRepository {
-    let userDefaults: UserDefaults = .mocked
+    let userDefaults: UserDefaults = .mock
 }

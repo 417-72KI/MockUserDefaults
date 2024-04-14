@@ -14,7 +14,7 @@ private let testKey = "MockUserDefaultsTestKey"
 private var standardDictionaryRepresentation: [String: Any]!
 
 class MockUserDefaultsSwiftTests: XCTestCase {
-    private let userDefaults: UserDefaults = .mocked
+    private let userDefaults: UserDefaults = .mock
 
     override static func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ class MockUserDefaultsSwiftTests: XCTestCase {
 
     override static func tearDown() {
         XCTAssertNotEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary,
-                          UserDefaults.mocked.dictionaryRepresentation() as NSDictionary)
+                          UserDefaults.mock.dictionaryRepresentation() as NSDictionary)
         XCTAssertEqualWithoutXCTKeys(UserDefaults.standard.dictionaryRepresentation(),
                                      standardDictionaryRepresentation)
         super.tearDown()
@@ -172,6 +172,13 @@ class MockUserDefaultsSwiftTests: XCTestCase {
     func testSync() {
         XCTAssertFalse(userDefaults.synchronize())
         // XCTAssertTrue(UserDefaults.standard.synchronize())
+    }
+
+    @available(*, deprecated, message: "Drop when `mocked` is removed")
+    func testDeprecated() {
+        let replaced = UserDefaults.mock
+        let deprecated = UserDefaults.mocked
+        XCTAssertEqual(replaced, deprecated)
     }
 }
 

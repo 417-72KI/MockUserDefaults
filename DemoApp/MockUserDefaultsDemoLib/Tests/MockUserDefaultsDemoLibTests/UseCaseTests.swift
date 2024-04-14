@@ -38,5 +38,5 @@ class UseCaseTests: XCTestCase, UsesUseCase {
 }
 
 private final class TestUseCase: UseCase {
-    let userDefaults: UserDefaults = .mocked
+    let userDefaults: UserDefaults = .mock
 }
