@@ -30,7 +30,7 @@ XCTAssertEqualObjects([userDefaults objectForKey:@"key"], @"string");
 ```
 ### Swift
 ```swift
-let userDefaults: UserDefaults = .mocked
+let userDefaults: UserDefaults = .mock
 userDefaults.set("string", forKey: "key")
 
 XCTAssertEqual(userDefaults.string(forKey: "key"), "string")
