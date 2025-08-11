@@ -14,7 +14,7 @@ jobs:
     outputs:
       latest-xcode-version: ${{ steps.extract-xcode-version.outputs.latest_xcode_version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - id: extract-xcode-version
         run: |
           latest_xcode_version=$(cat .github/matrix.json | jq -r '.xcode_version | max')
@@ -32,7 +32,7 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ needs.xcode-version.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run Test
         id: test
         run: |
