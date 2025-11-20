@@ -12,7 +12,7 @@ jobs:
       image: renovate/renovate:latest
       options: --user root
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - id: validate
         run: renovate-config-validator > validation-result.txt
       - uses: actions/github-script@v7
