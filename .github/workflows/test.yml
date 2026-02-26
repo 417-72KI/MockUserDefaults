@@ -55,7 +55,7 @@ jobs:
             test | xcpretty
       - name: Upload test result
         if: ${{ matrix.xcode_version == needs.generate-matrix.outputs.latest-xcode-version }}
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
           path: test_output
