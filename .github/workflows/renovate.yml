@@ -9,13 +9,13 @@ jobs:
     name: Verify
     runs-on: ubuntu-latest
     container:
-      image: renovate/renovate:latest
+      image: renovate/renovate:latest@sha256:f2d4c467a8eb4b885630a8ca7d068173db69a5a1156ba41480c0a3a2e011d759
       options: --user root
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - id: validate
         run: renovate-config-validator > validation-result.txt
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
         if: ${{ always() }}
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
