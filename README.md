@@ -3,8 +3,6 @@
 [![GitHub release](https://img.shields.io/github/release/417-72KI/MockUserDefaults/all.svg)](https://github.com/417-72KI/MockUserDefaults/releases)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2F417-72KI%2FMockUserDefaults%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/417-72KI/MockUserDefaults)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2F417-72KI%2FMockUserDefaults%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/417-72KI/MockUserDefaults)
-[![Platform](http://img.shields.io/cocoapods/p/MockUserDefaults.svg?style=flat)](http://cocoapods.org/pods/MockUserDefaults)
-[![Version](http://img.shields.io/cocoapods/v/MockUserDefaults.svg?style=flat)](http://cocoapods.org/pods/MockUserDefaults)
 [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/417-72KI/MockUserDefaults/master/LICENSE)
 
 `MockUserDefaults` is a simple replacement for `NSUserDefaults`/`UserDefaults` to make test easier.
@@ -16,6 +14,10 @@
 ```
 
 ### CocoaPods
+
+> [!WARNING]
+> CocoaPods support is no longer provided. Please use SwiftPM instead.
+
 ```ruby:Podfile
 pod 'MockUserDefaults'
 ```
