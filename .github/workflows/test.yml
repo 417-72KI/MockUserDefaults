@@ -18,7 +18,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
       latest-xcode-version: ${{ steps.set-matrix.outputs.latest-xcode-version }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - id: set-matrix
         run: |
           echo "matrix=$(cat .github/matrix.json | jq -c .)" >> $GITHUB_OUTPUT
@@ -40,7 +40,7 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Run Test
         id: test
         run: |
@@ -55,7 +55,7 @@ jobs:
             test | xcpretty
       - name: Upload test result
         if: ${{ matrix.xcode_version == needs.generate-matrix.outputs.latest-xcode-version }}
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: ${{ matrix.xcode_version }}-${{ steps.test.outputs.platform }}
           path: test_output
@@ -66,12 +66,12 @@ jobs:
     needs: xcodebuild
     runs-on: macOS-14
     steps:
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           path: test_output
       - name: Merge xcresult files
         run: xcrun xcresulttool merge test_output/**/*.xcresult --output-path test_output/TestResults.xcresult
-      - uses: kishikawakatsumi/xcresulttool@v1
+      - uses: kishikawakatsumi/xcresulttool@2b37f116695328d5e503ac8dadca0f1545a51da4 # v1
         if: success() || failure()
         with:
           path: test_output/TestResults.xcresult
@@ -88,6 +88,6 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Run Test
         run: swift test
