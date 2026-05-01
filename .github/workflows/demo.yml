@@ -22,13 +22,13 @@ jobs:
   test:
     name: Test
     needs: xcode-version
-    runs-on: macOS-14
+    runs-on: macOS-15
     strategy:
       fail-fast: false
       matrix: 
         destination:
           - 'platform=macOS'
-          - 'platform=iOS Simulator,name=iPhone 14 Pro'
+          - 'platform=iOS Simulator,name=iPhone 16 Pro'
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ needs.xcode-version.outputs.latest-xcode-version }}.app/Contents/Developer
     steps:
