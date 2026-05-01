@@ -26,7 +26,7 @@ jobs:
   xcodebuild:
     name: via xcodebuild
     needs: generate-matrix
-    runs-on: macOS-14
+    runs-on: macOS-15
     strategy:
       fail-fast: false
       matrix:
@@ -64,7 +64,7 @@ jobs:
   xcodebuild_result:
     name: Export xcodebuild test result
     needs: xcodebuild
-    runs-on: macOS-14
+    runs-on: macOS-15
     steps:
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
@@ -81,7 +81,7 @@ jobs:
   swift_pm:
     name: via SwiftPM
     needs: generate-matrix
-    runs-on: macOS-14
+    runs-on: macOS-15
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
