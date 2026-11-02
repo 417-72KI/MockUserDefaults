@@ -9,7 +9,7 @@ jobs:
     name: Verify
     runs-on: ubuntu-latest
     container:
-      image: renovate/renovate:latest@sha256:f2d4c467a8eb4b885630a8ca7d068173db69a5a1156ba41480c0a3a2e011d759
+      image: renovate/renovate:latest@sha256:b7c15ab08a10a41bda18034332c23cd13ad93a5c6b1a63ad5d80b76e887f837f
       options: --user root
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
